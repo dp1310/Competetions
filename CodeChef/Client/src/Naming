@@ -1,0 +1,7 @@
+The package name signifies contest name.
+in the package, the file/class names starts from A.
+for nth problem in contest Big_Contest the class name would be
+nth character in Roman Script in upper Case and the package name
+would be Big_Contest.
+
+MAY15.E is the file for contest MAY15 problem 5

@@ -1,0 +1,86 @@
+package FEB15;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+
+import java.util.StringTokenizer;
+//package client.FEB15;
+
+public class RANKLIST {
+
+    public static void main(String[] args) {
+        InputStream inputStream = System.in;
+        OutputStream outputStream = System.out;
+        FEB15.InputReader in = new FEB15.InputReader(inputStream);
+        PrintWriter out = new PrintWriter(outputStream);
+        FEB15.TaskA solver = new FEB15.TaskA();
+        solver.solve(in, out);
+        out.close();
+    }
+}
+
+
+class TaskA {
+
+    public void solve(FEB15.InputReader in, PrintWriter out) {
+        int t = in.nextInt();
+        
+        while(t > 0) {
+            t--;
+            int n = in.nextInt();
+            long s = Long.parseLong(in.next());
+            
+            if(s==n) {
+                out.println(n-1);
+            } else {
+                double d = Math.sqrt(s<<1);
+                int m = (int)d;
+                
+                if(m==d)
+                    m--;
+                
+                long ts = (long)m * (long)(m+1);
+                ts = ts>>1;
+                
+                long ds = s-ts;
+                
+                while(m+ds<n) {
+                    ds = ds+m;
+                    m--;
+                }
+                
+                out.println(n-m);
+            }
+        }
+    }
+}
+
+class InputReader {
+    public BufferedReader reader;
+    public StringTokenizer tokenizer;
+
+    public InputReader(InputStream stream) {
+        reader = new BufferedReader(new InputStreamReader(stream), 32768);
+        tokenizer = null;
+    }
+
+    public String next() {
+        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+            try {
+                tokenizer = new StringTokenizer(reader.readLine());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return tokenizer.nextToken();
+    }
+
+    public int nextInt() {
+        return Integer.parseInt(next());
+    }
+
+}
