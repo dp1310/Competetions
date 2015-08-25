@@ -1,1 +1,3 @@
-Competetive Programming Contest problem solutions.
+Competitive Programming Contest problem solutions.
+
+Modifying the file
