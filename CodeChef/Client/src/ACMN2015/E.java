@@ -1,3 +1,5 @@
+package ACMN2015;
+
 import java.io.BufferedReader;
 //import static java.lang.System.in;
 import java.io.FileInputStream;
@@ -11,8 +13,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class E_Copy {
-    
+public class E {
+
     private static PrintWriter out;
     private static InputStream in;
 
@@ -20,7 +22,7 @@ public class E_Copy {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        E_Copy a = new E_Copy();
+        E a = new E();
         a.solve();
         out.close();
     }
@@ -29,18 +31,18 @@ public class E_Copy {
         InputReader in = new InputReader();
         StringBuilder sb = new StringBuilder();
         int t = in.readInt();
-        
-        while(t>0) {
+
+        while (t > 0) {
             t--;
             int n = in.readInt();
-            
-            for(int i=0; i<n; i++) {
+
+            for (int i = 0; i < n; i++) {
                 int m = in.readInt();
                 int[] ar = new int[m];
-                for(int j=0; j<m; j++) {
+                for (int j = 0; j < m; j++) {
                     ar[j] = in.readInt();
                 }
-                for(int k=i; k<m; k = k+n)
+                for (int k = i; k < m; k = k + n)
                     sb.append(ar[k]).append(' ');
             }
             sb.append('\n');
@@ -60,7 +62,7 @@ public class E_Copy {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            if(bufferSize==-1)
+            if (bufferSize == -1)
                 throw new IOException("No new bytes");
             for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
@@ -71,7 +73,7 @@ public class E_Copy {
                 }
             }
             for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                number = (number<<3) + (number<<1) + buffer[offset] - 0x30;
+                number = (number << 3) + (number << 1) + buffer[offset] - 0x30;
                 if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
@@ -80,58 +82,61 @@ public class E_Copy {
             ++offset;
             return number * s;
         }
-        
+
         public long readLong() throws IOException {
             long res = 0;
             int s = 1;
-            if(offset == bufferSize) {
+            if (offset == bufferSize) {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            for(; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
+            for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
                     s = -1;
-                if(offset == bufferSize-1) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
-            for(; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                res = (res<<3) + (res<<1) + buffer[offset] - 0x30;
-                if(offset == bufferSize -1) {
+            for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
+                res = (res << 3) + (res << 1) + buffer[offset] - 0x30;
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
             ++offset;
-            if(s==-1)
+            if (s == -1)
                 res = -res;
             return res;
         }
-        
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
-            if(offset == bufferSize) {
+            if (offset == bufferSize) {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            
-            if(bufferSize==-1 || bufferSize==0)
+
+            if (bufferSize == -1 || bufferSize == 0)
                 throw new IOException("No new bytes");
-            
-            for(; buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r'; ++offset) {
-                if(offset == bufferSize-1) {
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n' || buffer[offset] == '\r'; ++offset) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
-            for(; offset < bufferSize; ++offset) {
-                if(buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r')
+            for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n' || buffer[offset] == '\r')
                     break;
-                if(Character.isValidCodePoint(buffer[offset])) {
+                if (Character.isValidCodePoint(buffer[offset])) {
                     sb.appendCodePoint(buffer[offset]);
                 }
-                if(offset == bufferSize-1) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }

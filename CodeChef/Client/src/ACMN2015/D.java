@@ -1,3 +1,5 @@
+package ACMN2015D;
+
 import java.io.BufferedReader;
 //import static java.lang.System.in;
 import java.io.FileInputStream;
@@ -12,7 +14,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class D {
-    
+
     private static PrintWriter out;
     private static InputStream in;
 
@@ -40,45 +42,43 @@ public class D {
             for (int i = 0; i < n; i++) {
                 ar[i] = in.read();
             }
-            
+
             Arrays.sort(ar);
 
-//            sort(ar);
+            //            sort(ar);
             for (int i = 0; i < n; i++)
                 sb.append(ar[i]).append('\n');
         }
         out.print(sb);
     }
-    
-    
-    
-    
+
+
     private static void sort(String[] ar) {
-        if(ar.length <= 0)
+        if (ar.length <= 0)
             return;
         String[] br = new String[ar.length];
-        sort(ar,br,0,ar.length-1);
-        
+        sort(ar, br, 0, ar.length - 1);
+
     }
-    
+
     private static void sort(String[] a, String[] b, int begin, int end) {
         if (begin >= end) {
             return;
         }
 
-        int mid = (begin + end)>>1;
+        int mid = (begin + end) >> 1;
         sort(a, b, begin, mid);
         sort(a, b, mid + 1, end);
         merge(a, b, begin, end);
     }
 
     private static void merge(String[] a, String[] b, int begin, int end) {
-        int mid = (begin + end)>>1;
+        int mid = (begin + end) >> 1;
         int i = begin;
         int j = mid + 1;
         int k = begin;
         while (i <= mid && j <= end) {
-            if (a[i].compareTo(a[j])>0) {
+            if (a[i].compareTo(a[j]) > 0) {
                 b[k] = a[j];
                 j++;
             } else {
@@ -121,7 +121,7 @@ public class D {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            if(bufferSize==-1)
+            if (bufferSize == -1)
                 throw new IOException("No new bytes");
             for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
@@ -132,7 +132,7 @@ public class D {
                 }
             }
             for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                number = (number<<3) + (number<<1) + buffer[offset] - 0x30;
+                number = (number << 3) + (number << 1) + buffer[offset] - 0x30;
                 if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
@@ -141,30 +141,33 @@ public class D {
             ++offset;
             return number * s;
         }
-        
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
-            if(offset == bufferSize) {
+            if (offset == bufferSize) {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            
-            if(bufferSize==-1 || bufferSize==0)
+
+            if (bufferSize == -1 || bufferSize == 0)
                 throw new IOException("No new bytes");
-            
-            for(; buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r'; ++offset) {
-                if(offset == bufferSize-1) {
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n' || buffer[offset] == '\r'; ++offset) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
-            for(; offset < bufferSize; ++offset) {
-                if(buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r')
+            for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n' || buffer[offset] == '\r')
                     break;
-                if(Character.isValidCodePoint(buffer[offset])) {
+                if (Character.isValidCodePoint(buffer[offset])) {
                     sb.appendCodePoint(buffer[offset]);
                 }
-                if(offset == bufferSize-1) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }

@@ -22,7 +22,7 @@ public class SRM655A {
         out.close();
     }
 
-    class BichromeBoard {
+    /* class BichromeBoard {
         public String ableToDraw(String[] board) {
             char xor = 'B' & 'W';
             String yes = "Possible", no = "Impossible";
@@ -92,13 +92,13 @@ public class SRM655A {
             return yes;
         }
 
-    }
+    } */
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        BichromeBoard cb = new BichromeBoard();
-        String[] board = { "W??W" };
-        out.println(cb.ableToDraw(board));
+//        BichromeBoard cb = new BichromeBoard();
+//        String[] board = { "W??W" };
+//        out.println(cb.ableToDraw(board));
     }
 
     final static class InputReader {

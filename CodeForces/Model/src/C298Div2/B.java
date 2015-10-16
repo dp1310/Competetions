@@ -8,7 +8,7 @@ import java.io.PrintWriter;
  * problem Link: http://codeforces.com/contest/534/problem/B
  */
 
-public class B {
+public class C293D2B {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -17,7 +17,7 @@ public class B {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        B a = new B();
+        C293D2B a = new C293D2B();
         a.solve();
         out.close();
     }

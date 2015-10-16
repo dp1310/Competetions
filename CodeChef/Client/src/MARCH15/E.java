@@ -1,3 +1,5 @@
+package MARCH15;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -7,7 +9,7 @@ import java.io.PrintWriter;
  * @author  Ashok Rajpurohit
  * problem Link: http://www.codechef.com/MARCH15/problems/DEVCLASS
  */
-public class E_Copy {
+public class E {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -16,7 +18,7 @@ public class E_Copy {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        E_Copy a = new E_Copy();
+        E a = new E();
         a.solve();
         out.close();
     }
@@ -240,13 +242,13 @@ public class E_Copy {
         }
     }
 
-//    private long pow(long cost, int type) {
-//        return cost;
-////        if (type == 1 || cost == 1)
-////            return cost;
-////
-////        return cost * cost;
-//    }
+    //    private long pow(long cost, int type) {
+    //        return cost;
+    ////        if (type == 1 || cost == 1)
+    ////            return cost;
+    ////
+    ////        return cost * cost;
+    //    }
 
     final static class InputReader {
         byte[] buffer = new byte[8192];

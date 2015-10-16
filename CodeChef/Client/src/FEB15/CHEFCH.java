@@ -12,71 +12,71 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class CHEFCH {
-    
+
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
-        FEB15.InputReader in = new FEB15.InputReader(inputStream);
+        InputReader in = new InputReader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        FEB15.TaskA solver = new FEB15.TaskA();
+        TaskA solver = new TaskA();
         solver.solve(in, out);
         out.close();
     }
-}
 
-class TaskA {
-    public void solve (FEB15.InputReader in, PrintWriter out) {
-        int n = in.nextInt();
-        
-        while(n>0) {
-            n--;
-            String s = in.next();
-            int a = 0;
-            int b = 0;
-            boolean t = true;
-            
-            for(int i=0; i<s.length(); i++) {
-                if(t) {
-                    if(s.charAt(i)=='+')
-                        b++;
-                    else
-                        a++;
-                    t = false;
-                } else {
-                    if(s.charAt(i)=='+')
-                        a++;
-                    else
-                        b++;
-                    t = true;
+    final static class TaskA {
+        public void solve(InputReader in, PrintWriter out) {
+            int n = in.nextInt();
+
+            while (n > 0) {
+                n--;
+                String s = in.next();
+                int a = 0;
+                int b = 0;
+                boolean t = true;
+
+                for (int i = 0; i < s.length(); i++) {
+                    if (t) {
+                        if (s.charAt(i) == '+')
+                            b++;
+                        else
+                            a++;
+                        t = false;
+                    } else {
+                        if (s.charAt(i) == '+')
+                            a++;
+                        else
+                            b++;
+                        t = true;
+                    }
+                }
+                out.println((a > b) ? b : a);
+            }
+        }
+    }
+
+    final static class InputReader {
+        public BufferedReader reader;
+        public StringTokenizer tokenizer;
+
+        public InputReader(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream), 32768);
+            tokenizer = null;
+        }
+
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
-            out.println((a>b)?b:a);
+            return tokenizer.nextToken();
         }
-    }
-}
 
-class InputReader {
-    public BufferedReader reader;
-    public StringTokenizer tokenizer;
-
-    public InputReader(InputStream stream) {
-        reader = new BufferedReader(new InputStreamReader(stream), 32768);
-        tokenizer = null;
-    }
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(reader.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        public int nextInt() {
+            return Integer.parseInt(next());
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        return Integer.parseInt(next());
     }
-
 }

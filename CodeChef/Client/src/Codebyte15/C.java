@@ -1,9 +1,10 @@
-package SNCK15;
+package Codebyte15;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
 import static java.lang.System.in;
 
 import java.io.OutputStream;
@@ -11,21 +12,21 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class SNCK15AA {
+public class C {
 
-//    private static InputReader in;
+    //    private static InputReader in;
     private static PrintWriter out;
 
-    public SNCK15AA() {
+    public C() {
         super();
     }
 
     public static void main(String[] args) throws IOException {
-//        InputStream inputStream = System.in;
+        //        InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
-//        in = new InputReader(inputStream);
+        //        in = new InputReader(inputStream);
         out = new PrintWriter(outputStream);
-        SNCK15.SNCK15AA a = new SNCK15.SNCK15AA();
+        C a = new C();
         a.solve();
         out.close();
     }
@@ -34,31 +35,31 @@ public class SNCK15AA {
         NewInputReader in = new NewInputReader();
         StringBuilder sb = new StringBuilder();
         int t = in.readInt();
-        
-        while(t>0) {
+
+        while (t > 0) {
             t--;
             int n = in.readInt();
             int[] ar = new int[n];
             long[][] mar = new long[n][n];
             long r = 0;
-            
-            for(int i=0; i<n; i++) {
+
+            for (int i = 0; i < n; i++) {
                 ar[i] = in.readInt();
             }
-            
+
             int[] sar = sortIndex(ar);
-            r = solve(ar,sar,0,n-1);
+            r = solve(ar, sar, 0, n - 1);
             sb.append(r);
         }
-        
+
         out.print(sb);
     }
-    
-    private long solve(int[] ar,int[] sar,int i, int j) {
+
+    private long solve(int[] ar, int[] sar, int i, int j) {
         long r = ar[sar[i]];
-        return null;
+        return r;
     }
-    
+
     public static int[] sortIndex(int[] a) {
         int[] b = new int[a.length];
         int[] c = new int[a.length];
@@ -68,7 +69,7 @@ public class SNCK15AA {
         sort(a, b, c, 0, a.length - 1);
         return c;
     }
-    
+
     private static void sort(int[] a, int[] b, int[] c, int begin, int end) {
         if (begin == end) {
             return;
@@ -116,7 +117,7 @@ public class SNCK15AA {
             i++;
         }
     }
-    
+
 
     final static class NewInputReader {
         byte[] buffer = new byte[8192];

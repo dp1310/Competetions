@@ -8,8 +8,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
+ * Problem:
+ *
  * @author: Ashok Rajpurohit (ashok1113@gmail.com)
- * problem: 
  */
 
 public class Ashok {
@@ -39,6 +40,7 @@ public class Ashok {
 
         while (t > 0) {
             t--;
+            out.println(in.readInt() << 1);
         }
     }
 

@@ -9,50 +9,51 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class E_Copy {
+public class E {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
-        FEB15.InputReader in = new FEB15.InputReader(inputStream);
+        InputReader in = new InputReader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        FEB15.TaskA solver = new FEB15.TaskA();
+        TaskA solver = new TaskA();
         solver.solve(in, out);
         out.close();
     }
-}
 
-class TaskA {
-    public void solve(FEB15.InputReader in, PrintWriter out) {
-        int n = in.nextInt();
-        Object b = n;
-        //        out.println(b instanceof int);
-        out.println(b instanceof Integer);
+    final static class TaskA {
+        public void solve(InputReader in, PrintWriter out) {
+            int n = in.nextInt();
+            Object b = n;
+            //        out.println(b instanceof int);
+            out.println(b instanceof Integer);
 
-    }
-}
-
-class InputReader {
-    public BufferedReader reader;
-    public StringTokenizer tokenizer;
-
-    public InputReader(InputStream stream) {
-        reader = new BufferedReader(new InputStreamReader(stream), 32768);
-        tokenizer = null;
-    }
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(reader.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
-        return tokenizer.nextToken();
     }
 
-    public int nextInt() {
-        return Integer.parseInt(next());
+    final static class InputReader {
+        public BufferedReader reader;
+        public StringTokenizer tokenizer;
+
+        public InputReader(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream), 32768);
+            tokenizer = null;
+        }
+
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return tokenizer.nextToken();
+        }
+
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+
     }
 
 }

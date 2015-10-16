@@ -1,3 +1,19 @@
+import Problems.P014;
+
+import Problems.P020;
+
+import Problems.P021;
+
+import Problems.P022;
+
+import Problems.P023;
+
+import Problems.P024;
+
+import Problems.P025;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -5,7 +21,6 @@ import java.io.PrintWriter;
 
 /**
  * @author  Ashok Rajpurohit
- * problem Link:
  */
 
 public class Problem {
@@ -17,6 +32,14 @@ public class Problem {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
+
+        //        String input = "P022.IN", output = "P022.out";
+        //        FileInputStream fip = new FileInputStream(input);
+        //        FileOutputStream fop = new FileOutputStream(output);
+        //        in = fip;
+        //        out = new PrintWriter(fop);
+
+
         Problem a = new Problem();
         a.solve();
         out.close();
@@ -25,8 +48,9 @@ public class Problem {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         StringBuilder sb = new StringBuilder();
-
-        out.print(sb);
+        while (true)
+            System.out.println(P025.indexFibonacci(in.readInt()));
+        //        out.print(sb);
     }
 
     final static class InputReader {

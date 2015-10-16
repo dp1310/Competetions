@@ -1,4 +1,4 @@
-package SNCK15;
+//package SNCK15;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +18,7 @@ public class A {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        SNCK15.A a = new SNCK15.A();
+        A a = new A();
         a.solve();
         out.close();
     }

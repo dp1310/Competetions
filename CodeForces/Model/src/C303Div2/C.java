@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  *
  */
 
-public class C {
+public class C292D2C {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -20,7 +20,7 @@ public class C {
         in = System.in;
         out = new PrintWriter(outputStream);
 
-        C a = new C();
+        C292D2C a = new C292D2C();
         a.solve();
         out.close();
     }

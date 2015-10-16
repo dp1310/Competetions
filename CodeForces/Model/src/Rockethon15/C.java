@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class C {
+public class C292D2C {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;

@@ -1,5 +1,5 @@
-package SNCK15;
-//package LTIME21;
+//package SNCK15;
+package LTIME21;
 
 import java.awt.image.BufferStrategy;
 
@@ -13,13 +13,13 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class SNCK15AA {
-    
+public class C {
+
     private static InputReader in;
     private static PrintWriter out;
     private static int mod = 1000000007;
-    
-    public SNCK15AA() {
+
+    public C() {
         super();
     }
 
@@ -28,20 +28,20 @@ public class SNCK15AA {
         OutputStream outputStream = System.out;
         in = new InputReader(inputStream);
         out = new PrintWriter(outputStream);
-        SNCK15.SNCK15AA a = new SNCK15.SNCK15AA();
+        C a = new C();
         a.solve();
         out.close();
     }
-    
+
     public void solve() {
         int t = in.nextInt();
-        while(t>0) {
+        while (t > 0) {
             t--;
             String s = in.next();
             process(s);
         }
     }
-    
+
     public void process(String s) {
         StringBuffer sbuf = new StringBuffer(s);
         StringBuffer sad = new StringBuffer(s.length());
@@ -52,41 +52,41 @@ public class SNCK15AA {
         int sr = 0;
         int sb = 0;
         int sg = 0;
-        
-        for(int i=0; i<s.length(); i++) {
-            if(s.charAt(i)=='G') {
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == 'G') {
                 cg++;
-                sg = sg+i;
-            } else if(s.charAt(i)=='R') {
+                sg = sg + i;
+            } else if (s.charAt(i) == 'R') {
                 cr++;
-                sr = sr+i;
+                sr = sr + i;
             } else {
                 cb++;
-                sb = sb+i;
+                sb = sb + i;
             }
-            int sgav = sg/cg;
-            int sbav = sb/cb;
-            int srav = sr/cr;
-            
-            int max,min;
-            if(sgav>sbav) {
-                if(sbav>srav) {
+            int sgav = sg / cg;
+            int sbav = sb / cb;
+            int srav = sr / cr;
+
+            int max, min;
+            if (sgav > sbav) {
+                if (sbav > srav) {
                     max = 2;
                     min = 3;
-                } else if(sgav==srav) {
+                } else if (sgav == srav) {
                     max = 2;
-                    min = cb>cr ? 1 : 3;
-                } else if(sgav > srav) {
+                    min = cb > cr ? 1 : 3;
+                } else if (sgav > srav) {
                     max = 2;
-                    min = 
+                    min = 1; // incorrect @TODO
                 }
             }
         }
     }
-    
+
     final static class InputReader {
-        public BufferedReader reader;
-        public StringTokenizer tokenizer;
+        private BufferedReader reader;
+        private StringTokenizer tokenizer;
 
         public InputReader(InputStream stream) {
             reader = new BufferedReader(new InputStreamReader(stream), 32768);

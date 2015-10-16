@@ -1,4 +1,4 @@
-package SNCK15;
+package ACMN2015;
 
 import java.io.BufferedReader;
 //import static java.lang.System.in;

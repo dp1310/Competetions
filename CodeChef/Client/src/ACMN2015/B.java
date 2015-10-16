@@ -1,4 +1,4 @@
-package SNCK15;
+package ACMN2015;
 
 import java.io.BufferedReader;
 //import static java.lang.System.in;
@@ -28,31 +28,32 @@ public class B {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         StringBuilder sb = new StringBuilder();
-        
+
         int t = in.readInt();
-        while(t>0) {
+        while (t > 0) {
             t--;
             int n = in.readInt();
             int s = in.readInt();
             int[] ar = new int[n];
-            
-            for(int i=0; i<n; i++)
+
+            for (int i = 0; i < n; i++)
                 ar[i] = in.readInt();
-            
-            int res = solve(s,0,ar);
+
+            int res = solve(s, 0, ar);
             sb.append(res).append('\n');
         }
         out.print(sb);
     }
-    
+
     private int solve(int sum, int index, int[] ar) {
-        if(sum==0)
+        if (sum == 0)
             return 1;
-        
-        if(sum<0 || index == ar.length)
+
+        if (sum < 0 || index == ar.length)
             return 0;
-        
-        return solve(sum-ar[index], index+1, ar) + solve(sum, index+1, ar);
+
+        return solve(sum - ar[index], index + 1, ar) +
+            solve(sum, index + 1, ar);
     }
 
     final static class InputReader {
@@ -67,7 +68,7 @@ public class B {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            if(bufferSize==-1)
+            if (bufferSize == -1)
                 throw new IOException("No new bytes");
             for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
@@ -78,7 +79,7 @@ public class B {
                 }
             }
             for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                number = (number<<3) + (number<<1) + buffer[offset] - 0x30;
+                number = (number << 3) + (number << 1) + buffer[offset] - 0x30;
                 if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);

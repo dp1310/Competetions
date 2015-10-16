@@ -1,4 +1,4 @@
-package SNCK15;
+package GOC2015;
 
 import java.io.IOException;
 import java.io.InputStream;

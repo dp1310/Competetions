@@ -1,3 +1,5 @@
+package APRIL15;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -8,7 +10,7 @@ import java.io.PrintWriter;
  * problem Link:  http://www.codechef.com/APRIL15/problems/CARLOS
  */
 
-public class E_Copy {
+public class E {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -19,7 +21,7 @@ public class E_Copy {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        E_Copy a = new E_Copy();
+        E a = new E();
         a.solve();
         out.close();
     }

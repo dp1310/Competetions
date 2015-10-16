@@ -1,3 +1,5 @@
+package MARCH15;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -5,7 +7,8 @@ import java.io.PrintWriter;
 
 /**
  * @author  Ashok Rajpurohit
- * problem Link:    http://www.codechef.com/MARCH15/problems/SIGNWAVE
+ * problem Link:
+ * http://www.codechef.com/MARCH15/problems/SIGNWAVE
  */
 public class G {
 

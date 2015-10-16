@@ -1,5 +1,5 @@
-package SNCK15;
-//package LTIME21;
+//package SNCK15;
+package LTIME21;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,16 +12,16 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class A {
-    
+
     private static InputReader in;
     private static PrintWriter out;
     private static int mod = 1000000007;
-    
+
     public A() {
         super();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
         in = new InputReader(inputStream);
@@ -30,21 +30,21 @@ public class A {
         a.solve();
         out.close();
     }
-    
+
     public void solve() {
         int t = in.nextInt();
-        while(t>0) {
+        while (t > 0) {
             t--;
             String s = in.next();
             int count = 0;
-            for(int i=0; i<s.length(); i++) {
-                if(s.charAt(i)=='4')
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '4')
                     count++;
             }
             out.println(count);
         }
     }
-    
+
     final static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;

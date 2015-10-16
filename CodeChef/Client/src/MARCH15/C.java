@@ -1,4 +1,4 @@
-package SNCK15;
+package MARCH15;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +11,7 @@ import java.util.HashMap;
  * @author  Ashok Rajpurohit
  * prblme Link: http://www.codechef.com/MARCH15/problems/QCHEF
  */
-public class SNCK15AA {
+public class C {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -27,7 +27,7 @@ public class SNCK15AA {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        SNCK15.SNCK15AA a = new SNCK15.SNCK15AA();
+        C a = new C();
         long t1 = System.currentTimeMillis();
         a.solve();
         long t2 = System.currentTimeMillis() - t1;

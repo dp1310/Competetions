@@ -15,72 +15,71 @@ public class RANKLIST {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
-        FEB15.InputReader in = new FEB15.InputReader(inputStream);
+        InputReader in = new InputReader(inputStream);
         PrintWriter out = new PrintWriter(outputStream);
-        FEB15.TaskA solver = new FEB15.TaskA();
+        TaskA solver = new TaskA();
         solver.solve(in, out);
         out.close();
     }
-}
 
+    final static class TaskA {
 
-class TaskA {
+        public void solve(InputReader in, PrintWriter out) {
+            int t = in.nextInt();
 
-    public void solve(FEB15.InputReader in, PrintWriter out) {
-        int t = in.nextInt();
-        
-        while(t > 0) {
-            t--;
-            int n = in.nextInt();
-            long s = Long.parseLong(in.next());
-            
-            if(s==n) {
-                out.println(n-1);
-            } else {
-                double d = Math.sqrt(s<<1);
-                int m = (int)d;
-                
-                if(m==d)
-                    m--;
-                
-                long ts = (long)m * (long)(m+1);
-                ts = ts>>1;
-                
-                long ds = s-ts;
-                
-                while(m+ds<n) {
-                    ds = ds+m;
-                    m--;
+            while (t > 0) {
+                t--;
+                int n = in.nextInt();
+                long s = Long.parseLong(in.next());
+
+                if (s == n) {
+                    out.println(n - 1);
+                } else {
+                    double d = Math.sqrt(s << 1);
+                    int m = (int)d;
+
+                    if (m == d)
+                        m--;
+
+                    long ts = (long)m * (long)(m + 1);
+                    ts = ts >> 1;
+
+                    long ds = s - ts;
+
+                    while (m + ds < n) {
+                        ds = ds + m;
+                        m--;
+                    }
+
+                    out.println(n - m);
                 }
-                
-                out.println(n-m);
             }
         }
     }
-}
 
-class InputReader {
-    public BufferedReader reader;
-    public StringTokenizer tokenizer;
+    final static class InputReader {
+        public BufferedReader reader;
+        public StringTokenizer tokenizer;
 
-    public InputReader(InputStream stream) {
-        reader = new BufferedReader(new InputStreamReader(stream), 32768);
-        tokenizer = null;
-    }
-
-    public String next() {
-        while (tokenizer == null || !tokenizer.hasMoreTokens()) {
-            try {
-                tokenizer = new StringTokenizer(reader.readLine());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        public InputReader(InputStream stream) {
+            reader = new BufferedReader(new InputStreamReader(stream), 32768);
+            tokenizer = null;
         }
-        return tokenizer.nextToken();
-    }
 
-    public int nextInt() {
-        return Integer.parseInt(next());
-    }
+        public String next() {
+            while (tokenizer == null || !tokenizer.hasMoreTokens()) {
+                try {
+                    tokenizer = new StringTokenizer(reader.readLine());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            return tokenizer.nextToken();
+        }
 
+        public int nextInt() {
+            return Integer.parseInt(next());
+        }
+
+    }
 }

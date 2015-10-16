@@ -1,3 +1,5 @@
+import Problems.P014;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,8 +29,8 @@ public class P011 {
         out.println(solve(in.readIntDoubleArray(20, 20)));
     }
 
-    private int solve(int[][] ar) {
-        int max = Integer.MIN_VALUE, temp = 1;
+    private long solve(int[][] ar) {
+        long max = 0, temp = 1;
 
         for (int i = 0; i < 20; i++)
             for (int j = 0; j < 20; j++)
@@ -121,6 +123,7 @@ public class P011 {
                 max = Math.max(max, temp);
             }
         }
+
 
         return max;
     }

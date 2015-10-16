@@ -1,4 +1,4 @@
-package SNCK15;
+package Codebyte15;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +24,7 @@ public class B {
         OutputStream outputStream = System.out;
         in = new InputReader(inputStream);
         out = new PrintWriter(outputStream);
-        SNCK15.B a = new SNCK15.B();
+        B a = new B();
         a.solve();
         out.close();
     }
@@ -32,16 +32,16 @@ public class B {
     public void solve() {
         int t = in.nextInt();
         StringBuilder sb = new StringBuilder();
-        while(t>0) {
+        while (t > 0) {
             t--;
             long n = Long.parseLong(in.next());
             long m = Long.parseLong(in.next());
-            m = m + (n>>1);
-            m = m > n ? m-n : m;
+            m = m + (n >> 1);
+            m = m > n ? m - n : m;
             sb.append(m).append("\n");
         }
         out.println(sb);
-        
+
     }
 
     final static class InputReader {

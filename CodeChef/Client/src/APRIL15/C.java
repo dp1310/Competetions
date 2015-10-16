@@ -1,4 +1,4 @@
-package SNCK15;
+package APRIL15;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +10,7 @@ import java.io.PrintWriter;
  * problem Link:  http://www.codechef.com/APRIL15/problems/PIANO1
  */
 
-public class SNCK15AA {
+public class C {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -19,7 +19,7 @@ public class SNCK15AA {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        SNCK15.SNCK15AA a = new SNCK15.SNCK15AA();
+        C a = new C();
         a.solve();
         out.close();
     }

@@ -1,4 +1,4 @@
-//package LunchTime;
+package LunchTime;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,16 +51,16 @@ public class July15B {
 
         for (int i = 0; i < k; i++) {
             plusDiag[x[i] + y[i] - 2]++;
-            phool += minusDiag[y[i] - x[i] + n - 1] = true;
+            phool += minusDiag[y[i] - x[i] + n - 1];
             //            phool += Math.max(x[i] + y[i] + 1, 2 * n - x[i] - y[i] - 1);
             //            phool += Math.max(x[i] - y[i] + n, n - x[i] + y[i]);
         }
 
         for (int i = 0; i < plusDiag.length; i++) {
-            if (plusDiag[i])
+            if (plusDiag[i] == 0) // incorrect
                 phool += Math.min(i + 1, 2 * n - i);
 
-            if (minusDiag[i])
+            if (minusDiag[i] == 0) // incorrect
                 phool += Math.min(i + 1, 2 * n - i);
         }
 

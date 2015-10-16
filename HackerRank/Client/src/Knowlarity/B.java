@@ -1,4 +1,4 @@
-//package Knowlarity;
+package Knowlarity;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

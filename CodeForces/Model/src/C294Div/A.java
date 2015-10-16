@@ -8,12 +8,12 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class A {
+public class C293D2A {
 
     private static InputReader in;
     private static PrintWriter out;
 
-    public A() {
+    public C293D2A() {
         super();
     }
 
@@ -22,7 +22,7 @@ public class A {
         OutputStream outputStream = System.out;
         in = new InputReader(inputStream);
         out = new PrintWriter(outputStream);
-        A a = new A();
+        C293D2A a = new C293D2A();
         a.solve();
         out.close();
     }

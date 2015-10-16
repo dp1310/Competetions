@@ -31,8 +31,8 @@ public class C300G {
         ar = new char[l];
         x = new int[l];
         y = new int[l];
-        
-        for(int i=0; i<n; i++) {
+
+        for (int i = 0; i < n; i++) {
             int t = in.readInt() % l;
             x[t] = in.readInt();
             y[t] = in.readInt();

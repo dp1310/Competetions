@@ -1,5 +1,5 @@
-package SNCK15;
-//package client.COOK15;
+//package COOK15;
+package client.COOK15;
 
 import java.io.BufferedReader;
 import java.io.IOException;
