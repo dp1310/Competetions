@@ -27,8 +27,8 @@ public class SNCK15ELB {
         String s = in.read();
         int q = in.readInt();
         StringBuilder sb = new StringBuilder(q << 2);
-        
-        while(q > 0) {
+
+        while (q > 0) {
             q--;
             int index = in.readInt() - 1;
             int len = in.readInt();

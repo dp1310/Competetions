@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+
 import java.util.InputMismatchException;
 
 public class Egor {
@@ -22,7 +23,7 @@ public class Egor {
     }
 
     public void solve() {
-        
+
     }
 
     final static class InputReader {
@@ -114,7 +115,7 @@ public class Egor {
         public void printLine(int i) {
             writer.println(i);
         }
-        
+
         public void println(String s) {
             writer.println();
         }

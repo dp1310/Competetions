@@ -39,28 +39,28 @@ public class GCDQEgorInput {
             int[] ar = new int[n];
             int[] lg = new int[n];
             int[] rg = new int[n];
-            
-            for(int i=0; i < n; i++)
+
+            for (int i = 0; i < n; i++)
                 ar[i] = in.readInt();
-            
+
             lg[0] = ar[0];
-            for(int i=1; i<n; i++)
-                lg[i] = gcd(lg[i-1],ar[i]);
-            
-            rg[n-1] = ar[n-1];
-            for(int i=n-2; i>=0; i--)
-                rg[i] = gcd(rg[i+1],ar[i]);
-            
-            while(q>0) {
+            for (int i = 1; i < n; i++)
+                lg[i] = gcd(lg[i - 1], ar[i]);
+
+            rg[n - 1] = ar[n - 1];
+            for (int i = n - 2; i >= 0; i--)
+                rg[i] = gcd(rg[i + 1], ar[i]);
+
+            while (q > 0) {
                 q--;
                 int l = in.readInt();
                 int r = in.readInt();
-                if(l==1) {
+                if (l == 1) {
                     sb.append(rg[r]).append("\n");
-                } else if(r==n)
-                    sb.append(lg[l-2]).append("\n");
+                } else if (r == n)
+                    sb.append(lg[l - 2]).append("\n");
                 else {
-                    sb.append(gcd(lg[l-2],rg[r])).append("\n");
+                    sb.append(gcd(lg[l - 2], rg[r])).append("\n");
                 }
             }
         }

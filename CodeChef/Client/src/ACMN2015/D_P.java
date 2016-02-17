@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class D_P {
-    
+
     private static PrintWriter out;
     private static InputReader in;
 
@@ -45,16 +45,14 @@ public class D_P {
         }
         out.print(sb);
     }
-    
-    
-    
-    
+
+
     private static void sort(String[] ar) {
         String[] br = new String[ar.length];
-        sort(ar,br,0,ar.length-1);
-        
+        sort(ar, br, 0, ar.length - 1);
+
     }
-    
+
     private static void sort(String[] a, String[] b, int begin, int end) {
         if (begin == end) {
             return;
@@ -72,7 +70,7 @@ public class D_P {
         int j = mid + 1;
         int k = begin;
         while (i <= mid && j <= end) {
-            if (a[i].compareTo(a[j])>0) {
+            if (a[i].compareTo(a[j]) > 0) {
                 b[k] = a[j];
                 j++;
             } else {

@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author: Ashok Rajpurohit ashok1113
  *  problem Link: http://www.codechef.com/MAY15/problems/CHAPD
  *
  *  for two number a and b all of their common prime factors with max power (in
@@ -19,6 +18,8 @@ import java.io.PrintWriter;
  *  in the end if b will be product of uncommon factors only and c will be 1
  *  as now there is no common factors in b and c.
  *  if b is 1 it means there was no uncommon prime factor.
+ *
+ *  @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
 public class C {

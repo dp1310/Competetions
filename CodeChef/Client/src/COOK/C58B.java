@@ -7,7 +7,7 @@ import java.io.PrintWriter;
  * @author: Ashok Rajpurohit
  * problem: Devu, his friends and birthday gifts
  * http://www.codechef.com/COOK58/problems/DEVBDAY
- * 
+ *
  * adhoora hai ye,
  */
 
@@ -35,15 +35,15 @@ public class C58B {
             int[][] friend;
         }
     }
-    
+
     class Node {
         Node next;
         int index;
-        
+
         Node(int n) {
             index = n;
         }
-        
+
         Node(int n, Node node) {
             index = n;
             next = node;

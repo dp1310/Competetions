@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class Trie {
-    
+
     private static PrintWriter out;
     private static InputStream in;
 
@@ -29,130 +29,129 @@ public class Trie {
         StringBuilder sb = new StringBuilder();
         int t = in.readInt();
         StringBuilder sbuf = new StringBuilder();
-        
-        while(t>0) {
+
+        while (t > 0) {
             t--;
             int n = in.readInt();
             String[] ar = new String[n];
-            
-            if(n>0) {
-                for(int i=0; i<n; i++) {
+
+            if (n > 0) {
+                for (int i = 0; i < n; i++) {
                     ar[i] = in.read();
                 }
-                
-                Node trie = new Node(ar[0],0);
-                for(int i=1; i<n; i++)
+
+                Node trie = new Node(ar[0], 0);
+                for (int i = 1; i < n; i++)
                     trie.add(ar[i], 0);
-                
-                trie.print(sb,sbuf);
+
+                trie.print(sb, sbuf);
             }
         }
         out.print(sb);
     }
-    
+
     private void sort(String[] ar) {
-        String[] br = new String[ar.length-1];
+        String[] br = new String[ar.length - 1];
         int maxl = 0;
-        for(int i=0; i<ar.length; i++)
+        for (int i = 0; i < ar.length; i++)
             maxl = maxl > ar[i].length() ? maxl : ar[i].length();
-        
+
         int sort_pos = 0;
     }
-    
+
     class Node {
         Node left, right, equal;
         boolean end = false;
         Character ch;
         int count = 0;
-        
+
         public Node(String s, int pos) {
-            if(ch==null) {
+            if (ch == null) {
                 ch = s.charAt(pos);
-                if(pos==s.length()-1) {
+                if (pos == s.length() - 1) {
                     end = true;
                     count++;
                 } else
-                    equal = new Node(s,pos+1);
+                    equal = new Node(s, pos + 1);
             } else {
-                if(ch < s.charAt(pos)) {
-                    if(right==null)
-                        right = new Node(s,pos);
+                if (ch < s.charAt(pos)) {
+                    if (right == null)
+                        right = new Node(s, pos);
                     else
-                        right.add(s,pos);
-                } else if(ch == s.charAt(pos)) {
-                    if(pos==s.length()-1) {
+                        right.add(s, pos);
+                } else if (ch == s.charAt(pos)) {
+                    if (pos == s.length() - 1) {
                         end = true;
                         count++;
-                    } else if(equal==null) {
-                        equal = new Node(s,pos+1);
+                    } else if (equal == null) {
+                        equal = new Node(s, pos + 1);
                     } else {
-                        equal.add(s,pos+1);
+                        equal.add(s, pos + 1);
                     }
                 } else {
-                    if(left==null)
-                        left = new Node(s,pos);
+                    if (left == null)
+                        left = new Node(s, pos);
                     else
-                        left.add(s,pos);
+                        left.add(s, pos);
                 }
             }
         }
-        
+
         private void add(String s, int pos) {
-            if(s.charAt(pos)==this.ch) {
-                if(pos==s.length()-1) {
+            if (s.charAt(pos) == this.ch) {
+                if (pos == s.length() - 1) {
                     this.end = true;
                     count++;
                     return;
                 } else {
-                    equal.add(s, pos+1);
+                    equal.add(s, pos + 1);
                     return;
                 }
-            } else if(s.charAt(pos)<this.ch) {
-                if(left==null) {
-                    left = new Node(s,pos);
+            } else if (s.charAt(pos) < this.ch) {
+                if (left == null) {
+                    left = new Node(s, pos);
                     return;
                 } else
-                    left.add(s,pos);
+                    left.add(s, pos);
             } else {
-                if(right==null) {
-                    right = new Node(s,pos);
+                if (right == null) {
+                    right = new Node(s, pos);
                     return;
                 } else {
-                    right.add(s,pos);
+                    right.add(s, pos);
                     return;
                 }
             }
             return;
         }
-        
+
         public void print(StringBuilder sb, StringBuilder sbuf) {
             int clen = sbuf.length();
-            if(left!=null) {
-                left.print(sb,sbuf);
+            if (left != null) {
+                left.print(sb, sbuf);
                 sbuf.delete(clen, sbuf.length());
             }
             sbuf.append(ch);
-            while(this.count>0) {
+            while (this.count > 0) {
                 this.count--;
                 sb.append(sbuf).append('\n');
             }
-            
-            if(equal!=null)
-                equal.print(sb,sbuf);
-            
+
+            if (equal != null)
+                equal.print(sb, sbuf);
+
             sbuf.deleteCharAt(clen);
-            
-            if(right!=null) {
-                right.print(sb,sbuf);
+
+            if (right != null) {
+                right.print(sb, sbuf);
             }
-            
+
             left = null;
             right = null;
             equal = null;
         }
     }
-    
-    
+
 
     final static class InputReader {
         byte[] buffer = new byte[8192];
@@ -166,7 +165,7 @@ public class Trie {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            if(bufferSize==-1)
+            if (bufferSize == -1)
                 throw new IOException("No new bytes");
             for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
@@ -177,7 +176,7 @@ public class Trie {
                 }
             }
             for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                number = (number<<3) + (number<<1) + buffer[offset] - 0x30;
+                number = (number << 3) + (number << 1) + buffer[offset] - 0x30;
                 if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
@@ -186,30 +185,33 @@ public class Trie {
             ++offset;
             return number * s;
         }
-        
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
-            if(offset == bufferSize) {
+            if (offset == bufferSize) {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            
-            if(bufferSize==-1 || bufferSize==0)
+
+            if (bufferSize == -1 || bufferSize == 0)
                 throw new IOException("No new bytes");
-            
-            for(; buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r'; ++offset) {
-                if(offset == bufferSize-1) {
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n' || buffer[offset] == '\r'; ++offset) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
-            for(; offset < bufferSize; ++offset) {
-                if(buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r')
+            for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n' || buffer[offset] == '\r')
                     break;
-                if(Character.isValidCodePoint(buffer[offset])) {
+                if (Character.isValidCodePoint(buffer[offset])) {
                     sb.appendCodePoint(buffer[offset]);
                 }
-                if(offset == bufferSize-1) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }

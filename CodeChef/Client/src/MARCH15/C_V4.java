@@ -88,7 +88,7 @@ public class C_V4 {
     }
 
     private static void format_iar() {
-        
+
     }
 
     final static class InputReader {

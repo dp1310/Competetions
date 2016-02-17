@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 /**
  * @author: Ashok Rajpurohit (ashok1113@gmail.com)
- * problem: 
+ * problem:
  */
 
 public class SEPB {

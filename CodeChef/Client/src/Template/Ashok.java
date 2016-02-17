@@ -13,7 +13,7 @@ import java.io.PrintWriter;
  * @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
-public class Ashok {
+class Ashok {
 
     private static PrintWriter out;
     private static InputStream in;

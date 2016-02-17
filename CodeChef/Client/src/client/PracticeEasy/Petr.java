@@ -9,10 +9,10 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 
 public class Petr {
-    
+
     private static InputReader in;
     private static PrintWriter out;
-    
+
     public Petr() {
         super();
     }
@@ -26,11 +26,11 @@ public class Petr {
         a.solve();
         out.close();
     }
-    
+
     public void solve() {
-        
+
     }
-    
+
     final static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;

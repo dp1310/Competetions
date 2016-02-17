@@ -37,14 +37,14 @@ public class June15B {
         int n = table.length;
         int[][] left = new int[n][n];
         int[][] top = new int[n][n];
-        
-        for(int i = 0; i < n; i++)
+
+        for (int i = 0; i < n; i++)
             left[i][0] = table[i][0];
-        
-        for(int i = 0; i < n; i++)
+
+        for (int i = 0; i < n; i++)
             top[0][i] = table[0][i];
-        
-        
+
+
         return 4;
     }
 

@@ -4,7 +4,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 public class F {
-    
+
     private static PrintWriter out;
     private static InputStream in;
 
@@ -20,23 +20,23 @@ public class F {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         StringBuilder sb = new StringBuilder();
-        
+
         int t = in.readInt();
-        
-        while(t>0) {
+
+        while (t > 0) {
             t--;
             String s = in.read();
-            for(int i=0; i<s.length(); i++) {
+            for (int i = 0; i < s.length(); i++) {
                 int p = s.charAt(i) + 5;
-                
-                if(s.charAt(i)>'Z') {
-                    if(p > 'z')
-                        p = p-26;
+
+                if (s.charAt(i) > 'Z') {
+                    if (p > 'z')
+                        p = p - 26;
                 } else {
-                    if(p > 'Z')
-                        p = p-26;
+                    if (p > 'Z')
+                        p = p - 26;
                 }
-                
+
                 sb.append((char)(p));
             }
             sb.append('\n');
@@ -56,7 +56,7 @@ public class F {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            if(bufferSize==-1)
+            if (bufferSize == -1)
                 throw new IOException("No new bytes");
             for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
@@ -67,7 +67,7 @@ public class F {
                 }
             }
             for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                number = (number<<3) + (number<<1) + buffer[offset] - 0x30;
+                number = (number << 3) + (number << 1) + buffer[offset] - 0x30;
                 if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
@@ -76,30 +76,33 @@ public class F {
             ++offset;
             return number * s;
         }
-        
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
-            if(offset == bufferSize) {
+            if (offset == bufferSize) {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            
-            if(bufferSize==-1 || bufferSize==0)
+
+            if (bufferSize == -1 || bufferSize == 0)
                 throw new IOException("No new bytes");
-            
-            for(; buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r'; ++offset) {
-                if(offset == bufferSize-1) {
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n' || buffer[offset] == '\r'; ++offset) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
-            for(; offset < bufferSize; ++offset) {
-                if(buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n' || buffer[offset] == '\r')
+            for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n' || buffer[offset] == '\r')
                     break;
-                if(Character.isValidCodePoint(buffer[offset])) {
+                if (Character.isValidCodePoint(buffer[offset])) {
                     sb.appendCodePoint(buffer[offset]);
                 }
-                if(offset == bufferSize-1) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }

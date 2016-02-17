@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
 
 public class A {
 
-//    private static NewInputReader in;
+    //    private static NewInputReader in;
     private static PrintWriter out;
     private static InputStream in;
 
@@ -31,46 +31,46 @@ public class A {
         InputReader in = new InputReader();
         int t = in.readInt();
         StringBuilder sb = new StringBuilder();
-        
-        while(t>0) {
+
+        while (t > 0) {
             t--;
             String s = in.read();
             sb.append(lpm(s)).append('\n');
         }
         out.print(sb);
     }
-    
+
     public String lpm(String s) {
-        int i=0;
+        int i = 0;
         boolean[][] lp = new boolean[s.length()][s.length()];
-        
+
         int maxl = 0;
-        int b=0,c=0;
-        
-        for(int j=0; j<s.length(); j++) {
-            for(int k=i; k<s.length(); k++) {
-                lpm(s,j,k,lp);
-                if(lp[j][k]) {
-                    if(maxl < k+1-j) {
-                        maxl = k+1-j;
+        int b = 0, c = 0;
+
+        for (int j = 0; j < s.length(); j++) {
+            for (int k = i; k < s.length(); k++) {
+                lpm(s, j, k, lp);
+                if (lp[j][k]) {
+                    if (maxl < k + 1 - j) {
+                        maxl = k + 1 - j;
                         b = j;
                         c = k;
                     }
                 }
             }
         }
-        
-        return s.substring(b, c+1);
+
+        return s.substring(b, c + 1);
     }
-    
+
     private boolean lpm(String s, int i, int j, boolean[][] lp) {
-        if(i>=j || lp[i][j])
+        if (i >= j || lp[i][j])
             return true;
-        
-        if(s.charAt(i)==s.charAt(j)) {
-            lp[i][j] = lpm(s,i+1,j-1,lp);
+
+        if (s.charAt(i) == s.charAt(j)) {
+            lp[i][j] = lpm(s, i + 1, j - 1, lp);
         }
-        
+
         return lp[i][j];
     }
 
@@ -86,7 +86,7 @@ public class A {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            if(bufferSize==-1)
+            if (bufferSize == -1)
                 throw new IOException("No new bytes");
             for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
                 if (buffer[offset] == '-')
@@ -97,7 +97,7 @@ public class A {
                 }
             }
             for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                number = (number<<3) + (number<<1) + buffer[offset] - 0x30;
+                number = (number << 3) + (number << 1) + buffer[offset] - 0x30;
                 if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
@@ -106,30 +106,33 @@ public class A {
             ++offset;
             return number * s;
         }
-        
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
-            if(offset == bufferSize) {
+            if (offset == bufferSize) {
                 offset = 0;
                 bufferSize = in.read(buffer);
             }
-            
-            if(bufferSize==-1 || bufferSize==0)
+
+            if (bufferSize == -1 || bufferSize == 0)
                 throw new IOException("No new bytes");
-            
-            for(; buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n'; ++offset) {
-                if(offset == bufferSize-1) {
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n'; ++offset) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }
             }
-            for(; offset < bufferSize; ++offset) {
-                if(buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] == '\n')
+            for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n')
                     break;
-                if(Character.isValidCodePoint(buffer[offset])) {
+                if (Character.isValidCodePoint(buffer[offset])) {
                     sb.appendCodePoint(buffer[offset]);
                 }
-                if(offset == bufferSize-1) {
+                if (offset == bufferSize - 1) {
                     offset = -1;
                     bufferSize = in.read(buffer);
                 }

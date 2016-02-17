@@ -53,7 +53,7 @@ public class April15C {
             if (s.charAt(i) != s.charAt(j))
                 return 0;
 
-        return 1 + solve(s,start,  start + (end - 1 - start) / 2);
+        return 1 + solve(s, start, start + (end - 1 - start) / 2);
     }
 
     final static class InputReader {

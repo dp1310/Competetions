@@ -25,96 +25,96 @@ public class XRMTRX_XAL {
 }
 
 class TaskA {
-    public static HashMap<String,FEB15.node> hm;// = new HashMap<String, node> (10000);
-    
+    public static HashMap<String, FEB15.node> hm; // = new HashMap<String, node> (10000);
+
     public void solve(FEB15.InputReader in, PrintWriter out) {
         int t = in.nextInt();
 
         while (t > 0) {
             t--;
-            hm = new HashMap <String, FEB15.node> (1000);
+            hm = new HashMap<String, FEB15.node>(1000);
             long l = Long.parseLong(in.next());
             long r = Long.parseLong(in.next());
             long mlen = 0;
             int mval = 0;
-            for(long i = l; i<= r; i++) {
-                FEB15.node temp = solve(l,r,i,i,0);
-                if(mlen < temp.len) {
+            for (long i = l; i <= r; i++) {
+                FEB15.node temp = solve(l, r, i, i, 0);
+                if (mlen < temp.len) {
                     mlen = temp.len;
                     mval = temp.val;
-                } else if(mlen == temp.len) {
+                } else if (mlen == temp.len) {
                     mval = mval + temp.val;
-                    mval = mval%1000000007;
+                    mval = mval % 1000000007;
                 }
             }
             out.println(mlen + " " + mval);
-//            hm.clear();
+            //            hm.clear();
         }
     }
-    
+
     public static FEB15.node solve(long l, long r, long i, long j, long k) {
-        if(i < l || i > r || j < l || j > r || (i ^ j) != k)
+        if (i < l || i > r || j < l || j > r || (i ^ j) != k)
             return null;
-        
-        String key = i+""+j;
-        
-        if(hm.containsKey(key)) {
-//            System.out.println("hm contains key " + hm.containsKey(key));
+
+        String key = i + "" + j;
+
+        if (hm.containsKey(key)) {
+            //            System.out.println("hm contains key " + hm.containsKey(key));
             return hm.get(key);
         }
-        
-        FEB15.node cur = new FEB15.node(i,j);
-        cur.up = solve(l,r,i-1,j,k+1);
-        cur.down = solve(l,r,i+1,j,k+1);
-        cur.left = solve(l,r,i,j-1,k+1);
-        cur.right = solve(l,r,i,j+1,k+1);
-        
+
+        FEB15.node cur = new FEB15.node(i, j);
+        cur.up = solve(l, r, i - 1, j, k + 1);
+        cur.down = solve(l, r, i + 1, j, k + 1);
+        cur.left = solve(l, r, i, j - 1, k + 1);
+        cur.right = solve(l, r, i, j + 1, k + 1);
+
         long mlen = -1;
         int mval = 0;
-        if(cur.up != null) {
-            if(mlen < cur.up.len) {
+        if (cur.up != null) {
+            if (mlen < cur.up.len) {
                 mlen = cur.up.len;
                 mval = cur.up.val;
-            } else if(mlen == cur.up.len) {
+            } else if (mlen == cur.up.len) {
                 mval = mval + cur.up.val;
                 mval = mval % 1000000007;
             }
         }
-        
-        if(cur.left != null) {
-            if(mlen < cur.left.len) {
+
+        if (cur.left != null) {
+            if (mlen < cur.left.len) {
                 mlen = cur.left.len;
                 mval = cur.left.val;
-            } else if(mlen == cur.left.len) {
+            } else if (mlen == cur.left.len) {
                 mval = mval + cur.left.val;
                 mval = mval % 1000000007;
             }
         }
-        
-        if(cur.right != null) {
-            if(mlen < cur.right.len) {
+
+        if (cur.right != null) {
+            if (mlen < cur.right.len) {
                 mlen = cur.right.len;
                 mval = cur.right.val;
-            } else if(mlen == cur.right.len) {
+            } else if (mlen == cur.right.len) {
                 mval = mval + cur.right.val;
                 mval = mval % 1000000007;
             }
         }
-        
-        if(cur.down != null) {
-            if(mlen < cur.down.len) {
+
+        if (cur.down != null) {
+            if (mlen < cur.down.len) {
                 mlen = cur.down.len;
                 mval = cur.down.val;
-            } else if(mlen == cur.down.len) {
+            } else if (mlen == cur.down.len) {
                 mval = mval + cur.down.val;
                 mval = mval % 1000000007;
             }
         }
-        
+
         mlen = mlen + 1;
         cur.len = mlen;
-        cur.val = mlen==0 ? 1 : mval;
-        
+        cur.val = mlen == 0 ? 1 : mval;
+
         hm.put(key, cur);
         return cur;
     }
@@ -129,6 +129,7 @@ class node {
     public FEB15.node right;
     public FEB15.node up;
     public FEB15.node down;
+
     node(long i, long j) {
         l = i;
         r = j;

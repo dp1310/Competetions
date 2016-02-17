@@ -15,13 +15,13 @@ public class April15D {
     private static boolean[] prime;
     static {
         boolean[] temp = new boolean[1000000];
-        
-        for(int i=2; i<1000000; i++) {
-            while(temp[i])
+
+        for (int i = 2; i < 1000000; i++) {
+            while (temp[i])
                 i++;
-            
-            for(int j = i+1; j<1000000; j++) {
-                if(!temp[j])
+
+            for (int j = i + 1; j < 1000000; j++) {
+                if (!temp[j])
                     temp[j] = j % i == 0;
             }
         }

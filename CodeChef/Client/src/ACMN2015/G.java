@@ -33,17 +33,17 @@ public class G {
             t--;
             String s = in.read();
             StringBuilder sb_temp = new StringBuilder();
-            int i=0;
+            int i = 0;
             int level = 0;
-            while(!(s.charAt(i)==',' && level==1) && i < s.length()) {
-                if(s.charAt(i)=='(')
+            while (!(s.charAt(i) == ',' && level == 1) && i < s.length()) {
+                if (s.charAt(i) == '(')
                     level++;
-                else if(s.charAt(i)==')')
+                else if (s.charAt(i) == ')')
                     level--;
                 i++;
             }
-            String a = s.substring(0,i);
-            String b = s.substring(i+1);
+            String a = s.substring(0, i);
+            String b = s.substring(i + 1);
         }
     }
 
