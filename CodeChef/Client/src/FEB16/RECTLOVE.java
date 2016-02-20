@@ -9,6 +9,27 @@ import java.io.PrintWriter;
  * Problem: Rectangles of Love
  * https://www.codechef.com/FEB16/problems/RECTLOVE
  *
+ * Let's analyze the solution:
+ * Pi referes to number of rectangles containing atleast i stars.
+ * APi referes to number of rectangles containing exactly i stars.
+ *
+ * So we know that the answer is:
+ * AP1 + 2 * AP2 + ... + r * APr + ... + n * APn.
+ *
+ * and:
+ *  AP1 = P1 - 2 * AP2 - 3 * AP3 - ... - r * APr - ... - n * APn
+ *  (as we know that APr is included r times while calculating P1,
+ *  once for each star)
+ *
+ * So replacing AP1 from equation 2 to equation 1 the answer is:
+ * P1.
+ *
+ * Oh, P1 is the total value, the expected value is:
+ * P1 / Total number of rectangles.
+ *
+ * Total number of rectangles in n x m matrix is C(n + 1, 2) * C(m + 1, 2).
+ * C(n, r) is n! / (r! * (n - r)!)
+ *
  * @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 

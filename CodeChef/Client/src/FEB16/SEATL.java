@@ -81,6 +81,19 @@ class SEATL {
         return maxCount;
     }
 
+    /**
+     * We have the list of rows and columns having maximum count of value.
+     * Some of rows and columns may not have the element 'value' as their
+     * intersection, so in that case the count is sum of counts from row and
+     * column else one less.
+     *
+     * @param rows
+     * @param cols
+     * @param value
+     * @param length
+     * @param matrix
+     * @return
+     */
     private static int count(LinkedList<Integer> rows,
                              LinkedList<Integer> cols, int value, int length,
                              int[][] matrix) {
@@ -120,6 +133,16 @@ class SEATL {
         return length - 1;
     }
 
+    /**
+     * This function stores the list of columns having maximum count of element.
+     * for element e the list of rows is stored at colCount[n].
+     *
+     * @param matrix
+     * @param n
+     * @param m
+     * @param count
+     * @return
+     */
     private static LinkedList<Integer>[] getColCount(int[][] matrix, int n,
                                                      int m, int[] count) {
         LinkedList<Integer>[] res = colCount;
@@ -148,6 +171,16 @@ class SEATL {
         return res;
     }
 
+    /**
+     * This function stores the list of rows having maximum count of element.
+     * for element e the list of rows is stored at rowCount[n].
+     *
+     * @param matrix
+     * @param n
+     * @param m
+     * @param count
+     * @return
+     */
     private static LinkedList<Integer>[] getRowsCount(int[][] matrix, int n,
                                                       int m, int[] count) {
         LinkedList<Integer>[] res = rowCount;
