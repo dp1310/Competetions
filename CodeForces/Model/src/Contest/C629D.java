@@ -1,4 +1,4 @@
-//package Contest;
+package Contest;
 
 import java.io.IOException;
 import java.io.InputStream;

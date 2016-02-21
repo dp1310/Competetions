@@ -1,4 +1,4 @@
-//package C292Div2;
+package C292Div2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class C292D2E {
         C292D2E e = new C292D2E();
         e.done();
     }
-    
+
     public void done() {
         InputReader in = new InputReader(System.in);
         OutputStream outputStream = System.out;
@@ -27,65 +27,53 @@ public class C292D2E {
         int m = in.nextInt();
         int[] h = new int[n];
         int[] d = new int[n];
-        
-        for(int i=0; i<n; i++) {
+
+        for (int i = 0; i < n; i++) {
             d[i] = in.nextInt();
         }
-        
-        int[] dsum = new int[n+1];
-        
-        for(int i=0; i<n; i++) {
-            dsum[i+1] = dsum[i]+d[i];
+
+        int[] dsum = new int[n + 1];
+
+        for (int i = 0; i < n; i++) {
+            dsum[i + 1] = dsum[i] + d[i];
         }
         dsum[0] = dsum[n];
-        
-        for(int i=0; i<n; i++) {
+
+        for (int i = 0; i < n; i++) {
             h[i] = in.nextInt();
         }
-        
+
         int[][] cal = new int[n][n];
-        
-        for(int i=0; i<n; i++) {
+
+        for (int i = 0; i < n; i++) {
             int max = 0;
-            int j = i+1;
-            j = j%n;
+            int j = i + 1;
+            j = j % n;
             int dis = 0;
-            while(j!=i) {
-                dis = dis+d[j];
-//                if(j==0)
-//                    dis = dis + d[n-1];
-//                else
-//                    dis = dis+d[j-1];
-                int dt;
-//                if(i<j)
-//                    dt = dsum[j]-dsum[i];
-//                else {
-//                    dt = dsum[j]+dsum[n]-dsum[i];
-//                }
-                int temp = (h[i]<<1)+(h[j]<<1)+dis;
+            while (j != i) {
+                dis = dis + d[j];
+                int temp = (h[i] << 1) + (h[j] << 1) + dis;
                 max = max > temp ? max : temp;
                 cal[i][j] = max;
                 j++;
-                j = j%n;
+                j = j % n;
             }
         }
-        
-        for(int i=0; i<m; i++) {
+
+        for (int i = 0; i < m; i++) {
             int a = in.nextInt();
             int b = in.nextInt();
-            
-            for(int j=a-1; j < b; j++) {
-                
+
+            for (int j = a - 1; j < b; j++) {
+
             }
-            out.println(cal[a-1][b-1]);
+            out.println(cal[a - 1][b - 1]);
         }
-        
-        
-        
-        
+
+
         out.close();
     }
-    
+
     final static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;

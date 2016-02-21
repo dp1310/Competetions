@@ -1,4 +1,4 @@
-//package C291Div2.C292Div2;
+package C292Div2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -14,24 +14,24 @@ public class C292D2B {
     public C292D2B() {
         super();
     }
-    
+
     public void don() {
         InputReader in = new InputReader(System.in);
         OutputStream outputStream = System.out;
         PrintWriter out = new PrintWriter(outputStream);
         int a = in.nextInt();
         int b = in.nextInt();
-        a = a<0 ? -a : a;
-        b = b<0 ? -b : b;
-        int sa = a+b;
+        a = a < 0 ? -a : a;
+        b = b < 0 ? -b : b;
+        int sa = a + b;
         int s = in.nextInt();
-        if(sa>s) {
+        if (sa > s) {
             out.println("NO");
-        } else if(sa==s) {
+        } else if (sa == s) {
             out.println("YES");
         } else {
-            int ds = s-sa;
-            if((ds&1)==0) {
+            int ds = s - sa;
+            if ((ds & 1) == 0) {
                 out.println("YES");
             } else {
                 out.println("NO");
@@ -44,7 +44,7 @@ public class C292D2B {
         C292D2B b = new C292D2B();
         b.don();
     }
-    
+
     final static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;

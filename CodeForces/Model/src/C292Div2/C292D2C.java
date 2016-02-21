@@ -1,3 +1,5 @@
+package C292Div2;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,7 +8,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
-//package C291Div2.C292Div2;
 
 public class C292D2C {
     public C292D2C() {
@@ -17,12 +18,12 @@ public class C292D2C {
         C292D2C c = new C292D2C();
         c.done();
     }
-    
+
     public void done() {
         InputReader in = new InputReader(System.in);
         OutputStream outputStream = System.out;
         PrintWriter out = new PrintWriter(outputStream);
-        
+
         int[][] a = new int[10][10];
         a[2][2] = 1;
         a[3][3] = 1;
@@ -37,7 +38,7 @@ public class C292D2C {
         a[9][7] = 1;
         a[9][2] = 1;
         a[9][3] = 2;
-        
+
         int[] count = new int[10];
         count[0] = 0;
         count[1] = 0;
@@ -49,29 +50,29 @@ public class C292D2C {
         count[7] = 1;
         count[8] = 4;
         count[9] = 4;
-        
-        
+
+
         int[] p = new int[10];
         int n = in.nextInt();
         String s = in.next();
-//        int dc = 0;
-        
-        for(int i=0; i<n; i++) {
-            for(int j=0; j<10; j++) {
-                p[j] = p[j]+a[s.charAt(i)-'0'][j];
+        //        int dc = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 10; j++) {
+                p[j] = p[j] + a[s.charAt(i) - '0'][j];
             }
         }
-        
-        for(int i=9; i>=0; i--) {
-            while(p[i]>0) {
+
+        for (int i = 9; i >= 0; i--) {
+            while (p[i] > 0) {
                 out.print(i);
                 p[i]--;
             }
         }
-        
+
         out.close();
     }
-    
+
     final static class InputReader {
         public BufferedReader reader;
         public StringTokenizer tokenizer;

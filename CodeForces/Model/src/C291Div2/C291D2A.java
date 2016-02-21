@@ -1,3 +1,5 @@
+package C291Div2;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,7 +8,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
-//package C291Div2;
 
 public class C291D2A {
 
@@ -25,18 +26,6 @@ class TaskA {
     public void solve(InputReader in, PrintWriter out) {
         StringBuffer sb = new StringBuffer(in.next());
         int temp;
-
-        //        int j;
-        //
-        //        for(j = 0; j < sb.length(); j++) {
-        //            if((sb.charAt(j) != '0') && (sb.charAt(j) != '9'))
-        //                break;
-        //        }
-        //
-        //        if(j == sb.length()) {
-        //            out.println(9);
-        //            return;
-        //        }
         int i = 0;
 
         if (sb.charAt(0) == '9')
