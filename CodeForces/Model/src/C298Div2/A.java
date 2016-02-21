@@ -1,14 +1,16 @@
+package C298Div2;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
 
 /**
  * @author: Ashok Rajpurohit
  * problem Link: http://codeforces.com/contest/534/problem/A
  */
 
-public class C293D2A {
+public class A {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -17,7 +19,7 @@ public class C293D2A {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        C293D2A a = new C293D2A();
+        A a = new A();
         a.solve();
         out.close();
     }

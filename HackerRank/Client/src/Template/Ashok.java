@@ -1,13 +1,14 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+package Template;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author: Ashok Rajpurohit (ashok1113@gmail.com)
- * problem:
+ * Problem:
+ *
+ * @author  Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
 public class Ashok {

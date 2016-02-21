@@ -10,8 +10,8 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class C293D2B {
-    public C293D2B() {
+public class C292D2B {
+    public C292D2B() {
         super();
     }
     
@@ -41,7 +41,7 @@ public class C293D2B {
     }
 
     public static void main(String[] args) {
-        C293D2B b = new C293D2B();
+        C292D2B b = new C292D2B();
         b.don();
     }
     

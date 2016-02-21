@@ -1,4 +1,4 @@
-package CJ15Q;
+package Practice;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -8,8 +8,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author: Ashok Rajpurohit (ashok1113@gmail.com)
+ * Problem:
  *
+ * @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
 public class Ashok {
@@ -23,12 +24,13 @@ public class Ashok {
         //        in = System.in;
         //        out = new PrintWriter(outputStream);
 
-        String input = "input_file.in", output = "output_file.out";
-        FileInputStream fip = new FileInputStream(input);
-        FileOutputStream fop = new FileOutputStream(output);
+        String path = "D:\\Competetion\\CodeJam\\Code\\src\\Practice\\";
+        String input = "CJ08R1AP0_large.in", output = "CJ08R1AP0_large.out";
+        FileInputStream fip = new FileInputStream(path + input);
+        FileOutputStream fop = new FileOutputStream(path + output);
         in = fip;
         out = new PrintWriter(fop);
-        CJ15Q.Ashok a = new CJ15Q.Ashok();
+        Ashok a = new Ashok();
         a.solve();
         out.close();
     }
@@ -36,9 +38,10 @@ public class Ashok {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         int t = in.readInt();
+        StringBuilder sb = new StringBuilder(t << 4);
 
-        while (t > 0) {
-            t--;
+        for (int i = 1; i <= t; i++) {
+
         }
     }
 
@@ -75,6 +78,14 @@ public class Ashok {
             return number * s;
         }
 
+        public int[] readIntArray(int n) throws IOException {
+            int[] ar = new int[n];
+            for (int i = 0; i < n; i++)
+                ar[i] = readInt();
+
+            return ar;
+        }
+
         public long readLong() throws IOException {
             long res = 0;
             int s = 1;
@@ -103,6 +114,15 @@ public class Ashok {
             return res;
         }
 
+        public long[] readLongArray(int n) throws IOException {
+            long[] ar = new long[n];
+
+            for (int i = 0; i < n; i++)
+                ar[i] = readLong();
+
+            return ar;
+        }
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
             if (offset == bufferSize) {
@@ -122,6 +142,39 @@ public class Ashok {
                 }
             }
             for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n' || buffer[offset] == '\r')
+                    break;
+                if (Character.isValidCodePoint(buffer[offset])) {
+                    sb.appendCodePoint(buffer[offset]);
+                }
+                if (offset == bufferSize - 1) {
+                    offset = -1;
+                    bufferSize = in.read(buffer);
+                }
+            }
+            return sb.toString();
+        }
+
+        public String read(int n) throws IOException {
+            StringBuilder sb = new StringBuilder(n);
+            if (offset == bufferSize) {
+                offset = 0;
+                bufferSize = in.read(buffer);
+            }
+
+            if (bufferSize == -1 || bufferSize == 0)
+                throw new IOException("No new bytes");
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n' || buffer[offset] == '\r'; ++offset) {
+                if (offset == bufferSize - 1) {
+                    offset = -1;
+                    bufferSize = in.read(buffer);
+                }
+            }
+            for (int i = 0; offset < bufferSize && i < n; ++offset) {
                 if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
                     buffer[offset] == '\n' || buffer[offset] == '\r')
                     break;

@@ -1,3 +1,5 @@
+package C292Div2;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,15 +9,11 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
-//package C291Div2.C292Div2;
 
-public class C293D2A {
-    public C293D2A() {
-        super();
-    }
+public class C292D2A {
 
     public static void main(String[] args) {
-        C293D2A a = new C293D2A();
+        C292D2A a = new C292D2A();
         a.done();
     }
     

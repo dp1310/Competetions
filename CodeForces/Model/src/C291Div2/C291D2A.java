@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.StringTokenizer;
 //package C291Div2;
 
-public class C293D2A {
+public class C291D2A {
 
     public static void main(String[] args) {
         InputStream inputStream = System.in;
@@ -25,31 +25,31 @@ class TaskA {
     public void solve(InputReader in, PrintWriter out) {
         StringBuffer sb = new StringBuffer(in.next());
         int temp;
-        
-//        int j;
-//        
-//        for(j = 0; j < sb.length(); j++) {
-//            if((sb.charAt(j) != '0') && (sb.charAt(j) != '9'))
-//                break;
-//        }
-//        
-//        if(j == sb.length()) {
-//            out.println(9);
-//            return;
-//        }
+
+        //        int j;
+        //
+        //        for(j = 0; j < sb.length(); j++) {
+        //            if((sb.charAt(j) != '0') && (sb.charAt(j) != '9'))
+        //                break;
+        //        }
+        //
+        //        if(j == sb.length()) {
+        //            out.println(9);
+        //            return;
+        //        }
         int i = 0;
-        
-        if(sb.charAt(0) == '9')
+
+        if (sb.charAt(0) == '9')
             i = 1;
-        
-        for(i = i; i < sb.length(); i++) {
-            if(sb.charAt(i) > '4') {
+
+        for (i = i; i < sb.length(); i++) {
+            if (sb.charAt(i) > '4') {
                 temp = sb.charAt(i);
                 temp = 9 + '0' - temp + '0';
                 sb.setCharAt(i, (char)temp);
             }
         }
-        
+
         out.println(sb);
     }
 }

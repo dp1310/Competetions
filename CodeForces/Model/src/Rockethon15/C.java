@@ -1,4 +1,4 @@
-//package Rockethon15;
+package Rockethon15;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
 
-public class C292D2C {
+public class C {
     public static void main(String[] args) {
         InputStream inputStream = System.in;
         OutputStream outputStream = System.out;
@@ -27,14 +27,14 @@ class TaskA {
         double temp = 0;
         double a = 0;
         double b = 0;
-        
-        
-        for(int i=0; i<n; i++) {
+
+
+        for (int i = 0; i < n; i++) {
             temp = in.nextInt() + in.nextInt();
-            temp = temp/2;
-            if(temp>b) {
+            temp = temp / 2;
+            if (temp > b) {
                 b = temp;
-                if(b>a) {
+                if (b > a) {
                     temp = a;
                     a = b;
                     b = temp;

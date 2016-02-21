@@ -86,6 +86,7 @@
    <hash n="oracle.jdeveloper.runner.RunConfigurations">
       <hash n="runConfigurationDefinitions">
          <hash n="Default">
+            <value n="allowInput" v="true"/>
             <value n="custom" v="false"/>
             <value n="name" v="Default"/>
          </hash>

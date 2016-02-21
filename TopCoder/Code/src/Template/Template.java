@@ -1,9 +1,6 @@
 package Template;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  * Problem Name:
@@ -17,14 +14,14 @@ public class Template {
     private static InputReader in;
 
     public static void main(String[] args) throws IOException {
-        //        in = new InputReader(System.in);
-        //        out = new Output(System.out);
+        in = new InputReader(System.in);
+        out = new Output(System.out);
 
-        String input = "input_file.in", output = "output_file.out";
-        FileInputStream fip = new FileInputStream(input);
-        FileOutputStream fop = new FileOutputStream(output);
-        in = new InputReader(fip);
-        out = new Output(fop);
+        //        String input = "input_file.in", output = "output_file.out";
+        //        FileInputStream fip = new FileInputStream(input);
+        //        FileOutputStream fop = new FileOutputStream(output);
+        //        in = new InputReader(fip);
+        //        out = new Output(fop);
 
         Template a = new Template();
         a.solve();
@@ -36,9 +33,5 @@ public class Template {
         while (t > 0) {
             t--;
         }
-    }
-
-    private static long square(int n) {
-        return 1L * n * n;
     }
 }

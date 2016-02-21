@@ -1,3 +1,4 @@
+package C303Div2;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,7 +11,7 @@ import java.io.PrintWriter;
  *
  */
 
-public class C292D2C {
+public class C {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -20,7 +21,7 @@ public class C292D2C {
         in = System.in;
         out = new PrintWriter(outputStream);
 
-        C292D2C a = new C292D2C();
+        C a = new C();
         a.solve();
         out.close();
     }

@@ -4,8 +4,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
+ * Problem:
+ *
  * @author: Ashok Rajpurohit
- * problem Link:  http://www.spoj.com/problems/
  */
 
 public class Ashok {
@@ -64,6 +65,14 @@ public class Ashok {
             return number * s;
         }
 
+        public int[] readIntArray(int n) throws IOException {
+            int[] ar = new int[n];
+            for (int i = 0; i < n; i++)
+                ar[i] = readInt();
+
+            return ar;
+        }
+
         public long readLong() throws IOException {
             long res = 0;
             int s = 1;
@@ -92,6 +101,15 @@ public class Ashok {
             return res;
         }
 
+        public long[] readLongArray(int n) throws IOException {
+            long[] ar = new long[n];
+
+            for (int i = 0; i < n; i++)
+                ar[i] = readLong();
+
+            return ar;
+        }
+
         public String read() throws IOException {
             StringBuilder sb = new StringBuilder();
             if (offset == bufferSize) {
@@ -111,6 +129,39 @@ public class Ashok {
                 }
             }
             for (; offset < bufferSize; ++offset) {
+                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
+                    buffer[offset] == '\n' || buffer[offset] == '\r')
+                    break;
+                if (Character.isValidCodePoint(buffer[offset])) {
+                    sb.appendCodePoint(buffer[offset]);
+                }
+                if (offset == bufferSize - 1) {
+                    offset = -1;
+                    bufferSize = in.read(buffer);
+                }
+            }
+            return sb.toString();
+        }
+
+        public String read(int n) throws IOException {
+            StringBuilder sb = new StringBuilder(n);
+            if (offset == bufferSize) {
+                offset = 0;
+                bufferSize = in.read(buffer);
+            }
+
+            if (bufferSize == -1 || bufferSize == 0)
+                throw new IOException("No new bytes");
+
+            for (;
+                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
+                 '\n' || buffer[offset] == '\r'; ++offset) {
+                if (offset == bufferSize - 1) {
+                    offset = -1;
+                    bufferSize = in.read(buffer);
+                }
+            }
+            for (int i = 0; offset < bufferSize && i < n; ++offset) {
                 if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
                     buffer[offset] == '\n' || buffer[offset] == '\r')
                     break;

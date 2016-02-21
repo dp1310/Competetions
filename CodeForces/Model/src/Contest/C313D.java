@@ -56,8 +56,6 @@ public class C313D {
                         a.length() - 1)) ||
             (process(a, 0, mid, b, mid + 1, a.length() - 1) &&
              process(a, mid + 1, a.length() - 1, b, 0, mid));
-
-        return false;
     }
 
     private static boolean process(String a, int astart, int aend, String b,

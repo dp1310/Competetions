@@ -1,13 +1,15 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.util.HashMap;
+
 /**
+ * Problem:
+ * Challenge:
+ *
  * @author: Ashok Rajpurohit ashok1113@gmail.com
- *  problem Link:
  */
 
 public class Ashok {
@@ -29,7 +31,6 @@ public class Ashok {
         int t = in.readInt();
         while (t > 0) {
             t--;
-
         }
     }
 

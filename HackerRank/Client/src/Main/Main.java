@@ -1,11 +1,15 @@
 package Main;
 
+import Contests.Hack101_33Paths;
+
 import NumberTheory.FibEasy;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
+import worldcodesprint.AlienFlowers;
 
 /**
  * @author  Ashok Rajpurohit
@@ -28,12 +32,9 @@ public class Main {
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        String[] args = new String[2];
-        FibEasy.main(args);
-        int t = in.readInt();
-
-        while (t > 0) {
-            t--;
+        while (true) {
+            out.println(AlienFlowers.ncr(in.readInt(), in.readInt()));
+            out.flush();
         }
     }
 

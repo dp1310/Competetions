@@ -12,6 +12,14 @@ import Problems.P024;
 
 import Problems.P025;
 
+import Problems.P026;
+
+import Problems.P030;
+
+import Problems.P034;
+
+import Problems.P035;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -48,9 +56,11 @@ public class Problem {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         StringBuilder sb = new StringBuilder();
-        while (true)
-            System.out.println(P025.indexFibonacci(in.readInt()));
-        //        out.print(sb);
+        while (true) {
+            out.println(P035.solve());
+            out.flush();
+            return;
+        }
     }
 
     final static class InputReader {

@@ -1,3 +1,5 @@
+package C291Div2;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,9 +8,8 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 import java.util.StringTokenizer;
-//package C291Div2;
 
-public class C293D2B {
+public class C291D2B {
 
     public static void main(String[] args) {
         InputStream inputStream = System.in;
@@ -26,48 +27,48 @@ class TaskA {
         int n = in.nextInt();
         int a = in.nextInt();
         int b = in.nextInt();
-        
+
         int[] x = new int[n];
         int[] y = new int[n];
         double[] sl = new double[n];
-        
-        for(int i = 0; i < n; i++) {
+
+        for (int i = 0; i < n; i++) {
             x[i] = in.nextInt();
             y[i] = in.nextInt();
         }
-        
-        for(int i = 0; i < n; i++) {
-            if(x[i] ==a && y[i] == b)
+
+        for (int i = 0; i < n; i++) {
+            if (x[i] == a && y[i] == b)
                 sl[i] = Integer.MAX_VALUE;
-            else if(x[i] == a)
+            else if (x[i] == a)
                 sl[i] = Integer.MIN_VALUE;
             else
-                sl[i] = ((double)(y[i] - b))/((double)(x[i]-a));
+                sl[i] = ((double)(y[i] - b)) / ((double)(x[i] - a));
         }
-        
+
         sort(sl);
         int count = 1;
-        
-        for(int i=1; i < n; i++) {
-            if(sl[i] == Integer.MAX_VALUE) {
+
+        for (int i = 1; i < n; i++) {
+            if (sl[i] == Integer.MAX_VALUE) {
                 out.println(count);
                 return;
             }
-                
-            if(sl[i] != sl[i-1])
+
+            if (sl[i] != sl[i - 1])
                 count++;
         }
-        
+
         out.println(count);
-        
-        
+
+
     }
-    
+
     private static void sort(double[] a) {
         double[] b = new double[a.length];
         sort(a, b, 0, a.length - 1);
     }
-    
+
     private static void sort(double[] a, double[] b, int begin, int end) {
         if (begin == end) {
             return;
