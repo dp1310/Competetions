@@ -5,6 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.TreeSet;
 
 /**
@@ -40,56 +42,123 @@ public class C629D {
             r2h[i] = 1L * r * r * h;
         }
 
+        if (sorted(r2h)) {
+            double res = 0.0;
+            for (double d : r2h)
+                res += d;
+
+            out.println(Math.PI * res);
+        }
+
         TreeSet<Cake> ts = new TreeSet<Cake>();
+        LinkedList<Cake> list;
         ts.add(new Cake(r2h[0]));
 
         for (int i = 1; i < n; i++) {
             Cake cake = new Cake(r2h[i]);
-            boolean yes = false;
+            boolean yes = true;
+            double tmax = 0.0;
+            Cake ck = ts.lower(cake);
+            list = new LinkedList<Cake>();
             for (Cake c : ts) {
-                if (c.max <= cake.max)
+                if (c.max >= cake.max)
                     break;
-                yes |= c.add(cake);
+
+                yes = false;
+                tmax = Math.max(tmax, c.vol);
+            }
+
+            for (Cake c : ts) {
+                if (c.max >= cake.max)
+                    break;
+
+                if (tmax == c.vol)
+                    list.add(c.add(cake));
             }
 
             if (!yes)
                 ts.add(cake);
+
+            for (Cake c : list)
+                ts.add(c);
+
+            //            print(list);
+            //            print(ts);
         }
 
-        out.println(Math.PI * ts.last().vol);
+        double maxVol = 0.0;
+        for (Cake cake : ts)
+            maxVol = Math.max(maxVol, cake.vol);
+
+        //        print(ts);
+
+        out.println(Math.PI * maxVol);
+    }
+
+    private static boolean sorted(long[] ar) {
+        for (int i = 1; i < ar.length; i++)
+            if (ar[i] <= ar[i - 1])
+                return false;
+
+        return true;
+    }
+
+    private static void print(LinkedList<Cake> list) {
+        StringBuilder sb = new StringBuilder("Printing list\n");
+        for (Cake cake : list)
+            sb.append(cake).append(", ");
+
+        out.println(sb);
+    }
+
+    private static void print(TreeSet<Cake> ts) {
+        StringBuilder sb = new StringBuilder("Printing TreeSet\n");
+        for (Cake cake : ts)
+            sb.append(cake).append(", ");
+
+        out.println(sb);
     }
 
     final static class Cake implements Comparable<Cake> {
-        long vol, max;
+        double vol, max;
+
+        Cake() {
+
+        }
 
         Cake(int r, int h) {
-            vol = 1L * r * r * h;
+            vol = 1.0 * r * r * h;
             max = vol;
         }
 
         Cake(long r2h) {
-            vol = r2h;
-            max = r2h;
+            vol = 1.0 * r2h;
+            max = 1.0 * r2h;
         }
 
-        boolean add(Cake cake) {
-            if (cake.max > this.max) {
-                vol += cake.vol;
-                max = cake.max;
-                return true;
-            }
-
-            return false;
+        Cake add(Cake cake) {
+            Cake res = new Cake();
+            res.vol = vol + cake.vol;
+            res.max = cake.max;
+            return res;
         }
 
         public int compareTo(Cake cake) {
-            if (this.max == cake.max)
-                return 0;
+            if (this.max == cake.max) {
+                if (vol <= cake.vol)
+                    return -1;
+
+                return 1;
+            }
 
             if (this.max > cake.max)
                 return 1;
 
             return -1;
+        }
+
+        public String toString() {
+            return vol + " : " + max;
         }
     }
 

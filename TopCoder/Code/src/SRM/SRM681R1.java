@@ -25,15 +25,15 @@ public class SRM681R1 {
     }
 
     private void solve() throws IOException {
-        int t = in.readInt();
-        CoinFlipsDiv2 cf = new CoinFlipsDiv2();
-        while (t > 0) {
-            out.println(cf.countCoins(in.read()));
+        ExplodingRobots obj = new ExplodingRobots();
+        while (true) {
+            out.println(obj.canExplode(in.readInt(), in.readInt(),
+                                       in.readInt(), in.readInt(), in.read()));
             out.flush();
         }
     }
 
-    final static class CoinFlipsDiv2 {
+    class CoinFlipsDiv2 {
         public int countCoins(String state) {
             if (state.length() == 1)
                 return 0;
@@ -53,6 +53,51 @@ public class SRM681R1 {
                 count++;
 
             return count;
+        }
+    }
+
+    class ExplodingRobots {
+        public String canExplode(int x1, int y1, int x2, int y2,
+                                 String instructions) {
+            String safe = "Safe", unsafe = "Explosion";
+
+            if (check(x1, y1, x2, y2, instructions))
+                return safe;
+
+            return unsafe;
+        }
+
+        private boolean check(int x, int y, int a, int b,
+                              String instructions) {
+            int ftop = y, fbot = y, fleft = x, fright = x;
+            int stop = b, sbot = b, sleft = a, sright = a;
+
+            for (int i = 0; i < instructions.length(); i++) {
+                if (instructions.charAt(i) == 'U') {
+                    ftop++;
+                    stop++;
+                } else if (instructions.charAt(i) == 'D') {
+                    fbot--;
+                    sbot--;
+                } else if (instructions.charAt(i) == 'L') {
+                    fleft--;
+                    sleft--;
+                } else {
+                    fright++;
+                    sright++;
+                }
+            }
+
+            return !overlap(ftop, fbot, fleft, fright, stop, sbot, sleft,
+                           sright);
+        }
+
+        private boolean overlap(int ftop, int fbot, int fleft, int fright,
+                                int stop, int sbot, int sleft, int sright) {
+            if (ftop < sbot || stop < fbot || fright < sleft || sright < fleft)
+                return false;
+
+            return true;
         }
     }
 }
