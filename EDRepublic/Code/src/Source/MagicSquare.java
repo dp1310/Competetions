@@ -13,6 +13,9 @@ import java.util.LinkedList;
 /**
  * EA Evaluation: Magic Squares
  *
+ * Given a set of numbers, find how many ways there
+ * are to build the Magic Square
+ *
  * @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
