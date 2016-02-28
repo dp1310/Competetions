@@ -1,24 +1,44 @@
+package Mathematics;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author  Ashok Rajpurohit
- * problem Link:  https://www.hackerrank.com/challenges/restaurant
- * Number Theory Easy 1
+ * Problem: Sherlock and Divisors
+ * https://www.hackerrank.com/challenges/sherlock-and-divisors
+ *
+ * @author  Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
-public class NTE1 {
+class SherlockAndDivisors {
 
     private static PrintWriter out;
     private static InputStream in;
+    private static boolean[] primes;
+
+    static {
+        primes = new boolean[31624];
+
+        for (int i = 2; i < primes.length; i++)
+            primes[i] = true;
+
+        for (int i = 2; i < primes.length; i++) {
+            if (!primes[i])
+                continue;
+
+            for (int j = i << 1; j < primes.length; j += i)
+                primes[j] = false;
+        }
+    }
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        NTE1 a = new NTE1();
+
+        SherlockAndDivisors a = new SherlockAndDivisors();
         a.solve();
         out.close();
     }
@@ -26,26 +46,39 @@ public class NTE1 {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         int t = in.readInt();
-        StringBuilder sb = new StringBuilder(t << 3);
 
         while (t > 0) {
             t--;
-            int l = in.readInt();
-            int b = in.readInt();
-            int gcd = gcd(l, b);
-            int count = gcd * gcd;
-            count = (l * b) / count;
-            sb.append(count).append('\n');
+            out.println(process(in.readInt()));
         }
-        out.print(sb);
     }
 
-    private static int gcd(int l, int b) {
-        if (l == 0)
-            return b;
-        if (b == 0)
-            return l;
-        return gcd(b, l % b);
+    private static int process(int n) {
+        if (n % 2 != 0)
+            return 0;
+
+        return count(n >>> 1);
+    }
+
+    private static int count(int n) {
+        int count = 1;
+
+        for (int i = 2; i < primes.length && i <= n; i++) {
+            if (primes[i]) {
+                int temp = 1;
+                while (n % i == 0) {
+                    temp++;
+                    n /= i;
+                }
+
+                count *= temp;
+            }
+        }
+
+        if (n != 1)
+            return count << 1;
+
+        return count;
     }
 
     final static class InputReader {
