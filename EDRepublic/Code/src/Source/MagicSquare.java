@@ -7,15 +7,22 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.util.Arrays;
+import java.util.LinkedList;
+
 /**
  * EA Evaluation: Magic Squares
+ *
  * @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
-public class MagicSquare {
+class MagicSquare {
 
     private static PrintWriter out;
     private static InputStream in;
+    private static int[] matrix;
+    private static Integer[] numbers, freq;
+    private static int sum, count;
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
@@ -29,24 +36,130 @@ public class MagicSquare {
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        while (true) {
-            System.out.println(solve(in.readIntArray(9)));
-        }
+
+        out.println(solve(in.readIntArray(9)));
     }
 
     private static int solve(int[] ar) {
-        int sum = 0;
+        int total = 0;
         for (int i = 0; i < 9; i++)
-            sum += ar[i];
+            total += ar[i];
 
-        if (sum % 3 != 0)
+        if (total % 3 != 0)
             return 0;
 
-        int max = 0;
-        for (int i = 0; i < 9; i++)
-            max = Math.max(max, ar[i]);
+        sum = total / 3;
 
-        return sum % 3;
+        populate(ar);
+
+        return process();
+    }
+
+    private static int process() {
+        count = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            matrix[0] = numbers[i];
+            freq[i]--;
+            permute(1);
+            freq[i]++;
+        }
+
+        return count;
+    }
+
+    private static void permute(int index) {
+        if (index == 9) {
+            if (check())
+                count++;
+
+            return;
+        }
+
+        for (int i = 0; i < numbers.length; i++) {
+            if (freq[i] > 0) {
+                matrix[index] = numbers[i];
+                freq[i]--;
+                permute(index + 1);
+                freq[i]++;
+            }
+        }
+    }
+
+    private static void populate(int[] ar) {
+        Arrays.sort(ar);
+        LinkedList<Integer> uniks = new LinkedList<Integer>(), fr =
+            new LinkedList<Integer>();
+
+        uniks.add(ar[0]);
+        int temp = ar[0];
+        for (int i = 0; i < 9; ) {
+            int count = 0;
+            while (i < 9 && ar[i] == temp) {
+                i++;
+                count++;
+            }
+
+            fr.add(count);
+            if (i < 9) {
+                temp = ar[i];
+                uniks.add(temp);
+            }
+        }
+
+        numbers = new Integer[uniks.size()];
+        freq = new Integer[uniks.size()];
+
+        matrix = new int[9];
+        numbers = uniks.toArray(numbers);
+        freq = fr.toArray(freq);
+    }
+
+    private static boolean check() {
+
+        if (matrix[0] + matrix[1] + matrix[2] != sum)
+            return false;
+
+        if (matrix[3] + matrix[4] + matrix[5] != sum)
+            return false;
+
+        if (matrix[6] + matrix[7] + matrix[8] != sum)
+            return false;
+
+        if (matrix[0] + matrix[3] + matrix[6] != sum)
+            return false;
+
+        if (matrix[1] + matrix[4] + matrix[7] != sum)
+            return false;
+
+        if (matrix[2] + matrix[5] + matrix[8] != sum)
+            return false;
+
+        /*
+        if (matrix[0] + matrix[4] + matrix[8] != sum)
+            return false;
+
+        if (matrix[2] + matrix[4] + matrix[6] != sum)
+            return false;
+        */
+
+        //        print(matrix);
+        return true;
+    }
+
+    private static void print(int[] ar) {
+        StringBuilder sb = new StringBuilder(30);
+        for (int e : ar)
+            sb.append(e).append(", ");
+
+        out.println(sb);
+    }
+
+    private static void print(Integer[] ar) {
+        StringBuilder sb = new StringBuilder(30);
+        for (Integer e : ar)
+            sb.append(e).append(", ");
+
+        out.println(sb);
     }
 
     final static class InputReader {
@@ -90,109 +203,6 @@ public class MagicSquare {
                 ar[i] = readInt();
 
             return ar;
-        }
-
-        public long readLong() throws IOException {
-            long res = 0;
-            int s = 1;
-            if (offset == bufferSize) {
-                offset = 0;
-                bufferSize = in.read(buffer);
-            }
-            for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
-                if (buffer[offset] == '-')
-                    s = -1;
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                res = (res << 3) + (res << 1) + buffer[offset] - 0x30;
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            ++offset;
-            if (s == -1)
-                res = -res;
-            return res;
-        }
-
-        public long[] readLongArray(int n) throws IOException {
-            long[] ar = new long[n];
-
-            for (int i = 0; i < n; i++)
-                ar[i] = readLong();
-
-            return ar;
-        }
-
-        public String read() throws IOException {
-            StringBuilder sb = new StringBuilder();
-            if (offset == bufferSize) {
-                offset = 0;
-                bufferSize = in.read(buffer);
-            }
-
-            if (bufferSize == -1 || bufferSize == 0)
-                throw new IOException("No new bytes");
-
-            for (;
-                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
-                 '\n' || buffer[offset] == '\r'; ++offset) {
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            for (; offset < bufferSize; ++offset) {
-                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
-                    buffer[offset] == '\n' || buffer[offset] == '\r')
-                    break;
-                if (Character.isValidCodePoint(buffer[offset])) {
-                    sb.appendCodePoint(buffer[offset]);
-                }
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            return sb.toString();
-        }
-
-        public String read(int n) throws IOException {
-            StringBuilder sb = new StringBuilder(n);
-            if (offset == bufferSize) {
-                offset = 0;
-                bufferSize = in.read(buffer);
-            }
-
-            if (bufferSize == -1 || bufferSize == 0)
-                throw new IOException("No new bytes");
-
-            for (;
-                 buffer[offset] == ' ' || buffer[offset] == '\t' || buffer[offset] ==
-                 '\n' || buffer[offset] == '\r'; ++offset) {
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            for (int i = 0; offset < bufferSize && i < n; ++offset) {
-                if (buffer[offset] == ' ' || buffer[offset] == '\t' ||
-                    buffer[offset] == '\n' || buffer[offset] == '\r')
-                    break;
-                if (Character.isValidCodePoint(buffer[offset])) {
-                    sb.appendCodePoint(buffer[offset]);
-                }
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            return sb.toString();
         }
     }
 }
