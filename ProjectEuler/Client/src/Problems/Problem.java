@@ -14,11 +14,21 @@ import Problems.P025;
 
 import Problems.P026;
 
+import Problems.P027;
 import Problems.P030;
 
+import Problems.P032;
 import Problems.P034;
 
 import Problems.P035;
+
+import Problems.P036;
+
+import Problems.P037;
+
+import Problems.P038;
+
+import Problems.P039;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -57,9 +67,8 @@ public class Problem {
         InputReader in = new InputReader();
         StringBuilder sb = new StringBuilder();
         while (true) {
-            out.println(P035.solve());
+            out.println(P039.solve(in.readInt()));
             out.flush();
-            return;
         }
     }
 

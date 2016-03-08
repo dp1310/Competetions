@@ -26,6 +26,7 @@ class MagicSquare {
     private static int[] matrix;
     private static Integer[] numbers, freq;
     private static int sum, count;
+    private static int n;
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
@@ -51,7 +52,8 @@ class MagicSquare {
         if (total % 3 != 0)
             return 0;
 
-        sum = total / 3;
+        n = 3;
+        sum = total / n;
 
         populate(ar);
 
@@ -76,6 +78,17 @@ class MagicSquare {
                 count++;
 
             return;
+        }
+
+        if (index == 3) {
+            if (!checkFirstRow())
+                return;
+        }
+
+        if (index == 6) {
+            if (!checkSecondRow()) {
+                return;
+            }
         }
 
         for (int i = 0; i < numbers.length; i++) {
@@ -115,6 +128,26 @@ class MagicSquare {
         matrix = new int[9];
         numbers = uniks.toArray(numbers);
         freq = fr.toArray(freq);
+    }
+
+    private static boolean checkFirstRow() {
+        return matrix[0] + matrix[1] + matrix[2] == sum;
+    }
+
+    private static boolean checkSecondRow() {
+        return matrix[3] + matrix[4] + matrix[5] == sum;
+    }
+
+    private static boolean checkRow(int index) {
+        if (index % n != 0)
+            return true;
+
+        long local = 0;
+        index -= n;
+        for (int i = 0; i < n; i++, index++)
+            local += matrix[index];
+
+        return local == sum;
     }
 
     private static boolean check() {

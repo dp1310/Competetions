@@ -5,58 +5,69 @@ public class P024 {
         super();
     }
 
-    private static int[] fact = new int[11];
+    private static int[] fact = new int[10];
 
     static {
         fact[0] = 1;
 
-        for (int i = 1; i < 11; i++)
+        for (int i = 1; i < 10; i++)
             fact[i] = fact[i - 1] * i;
     }
 
-    public static String solve(int n) {
-        boolean[] digits = new boolean[10];
-        for (int i = 0; i < 10; i++)
-            digits[i] = true;
+    public static String solve(int digitCount, int n) {
+        StringBuilder sb = new StringBuilder(digitCount);
 
-        StringBuilder sb = new StringBuilder(10);
-        permutation(sb, digits, n - 1);
+        char[] ar = new char[digitCount];
+        if (ar.length <= 10 && ar.length > 0) {
+            for (int i = 0; i < ar.length; i++)
+                ar[i] = (char)(i + '0');
+        } else {
+            throw new RuntimeException("Bhad mein ja");
+        }
+
+        permutation(sb, ar, n);
         return sb.toString();
     }
 
-    private static void permutation(StringBuilder sb, boolean[] digits,
-                                    int n) {
-        char[] ar = new char[10];
-        for (int i = 0; i < 10; i++)
-            ar[i] = (char)i;
+    public static String solve(String characters, int n) {
+        StringBuilder sb = new StringBuilder(characters.length());
 
-        for (int i = 0; i < 10; i++) {
-            //            if (n == fact[9 - i]) {
-            //                for (int j = i, k = 9; j < k; j++, k--) {
-            //                    char temp = ar[j];
-            //                    ar[j] = ar[k];
-            //                    ar[k] = temp;
-            //                }
-            //                for (int k = 0; k < 10; k++)
-            //                    sb.append(ar[k]);
-            //                return;
-            //            }
+        char[] ar = new char[characters.length()];
 
-            if (n > fact[9 - i]) {
-                int shift = n / fact[9 - i];
+        for (int i = 0; i < ar.length; i++)
+            ar[i] = characters.charAt(i);
+
+        permutation(sb, ar, n);
+        return sb.toString();
+    }
+
+    private static void permutation(StringBuilder sb, char[] ar, int n) {
+
+        boolean[] digits = new boolean[ar.length];
+        for (int i = 0; i < ar.length; i++)
+            digits[i] = true;
+
+        int digi = ar.length - 1;
+
+        for (int i = 0; i < digits.length; i++) {
+            if (n > fact[digi - i]) {
+                int shift = n / fact[digi - i];
+                n = n % fact[digi - i];
+
+                if (n == 0) {
+                    n = fact[digi - i];
+                    shift--;
+                }
                 char temp = ar[i];
-                ar[i] = ar[i + shift - 1];
-                for (int j = i + shift - 1; j > i; j--)
+                ar[i] = ar[i + shift];
+                for (int j = i + shift; j > i; j--)
                     ar[j] = ar[j - 1];
 
                 ar[i + 1] = temp;
-                n = n % fact[10 - i];
-                if (n == 0)
-                    n = fact[9 - i];
             }
         }
 
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < digits.length; i++)
             sb.append(ar[i]);
     }
 
@@ -64,20 +75,6 @@ public class P024 {
         System.out.println(n + "\t" + sb);
         if (n == 0)
             return;
-
-        //        if (n == 1) {
-        //            for (int i = 0; i < 10; i++)
-        //                if (digits[i])
-        //                    sb.append(i);
-        //            return;
-        //        }
-        //
-        //        if (n == 0) {
-        //            for (int i = 9; i >= 0; i--)
-        //                if (digits[i])
-        //                    sb.append(i);
-        //            return;
-        //        }
 
         int i = 10;
         while (i > 0 && fact[i] >= n)
@@ -87,13 +84,6 @@ public class P024 {
         n = n % fact[i];
         n++;
 
-        //        if (n == 0) {
-        //            for (int j = 9; j >= 0; j--)
-        //                if (digits[j])
-        //                    sb.append(j);
-        //            return;
-        //        }
-        //        n++;
         int j = 9, count = 1;
         while (count <= i && j >= 0) {
             if (digits[j])
