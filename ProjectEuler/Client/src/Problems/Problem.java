@@ -1,3 +1,6 @@
+
+import java.io.IOException;
+
 import Problems.P014;
 
 import Problems.P020;
@@ -18,6 +21,7 @@ import Problems.P027;
 import Problems.P030;
 
 import Problems.P032;
+import Problems.P033;
 import Problems.P034;
 
 import Problems.P035;
@@ -30,12 +34,29 @@ import Problems.P038;
 
 import Problems.P039;
 
+import Problems.P040;
+
+import Problems.P041;
+
+import Problems.P042;
+
+import Problems.P044;
+
+import Problems.P045;
+
+import Problems.P046;
+
+import Problems.P048;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author  Ashok Rajpurohit
@@ -51,7 +72,9 @@ public class Problem {
         in = System.in;
         out = new PrintWriter(outputStream);
 
-        //        String input = "P022.IN", output = "P022.out";
+        //        String input =
+        //            "D:\\GitHub\\Competetions\\ProjectEuler\\Client\\src\\Problems\\P042.IN", output =
+        //            "D:\\GitHub\\Competetions\\ProjectEuler\\Client\\src\\Problems\\P042.out";
         //        FileInputStream fip = new FileInputStream(input);
         //        FileOutputStream fop = new FileOutputStream(output);
         //        in = fip;
@@ -65,9 +88,12 @@ public class Problem {
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        StringBuilder sb = new StringBuilder();
+
         while (true) {
-            out.println(P039.solve(in.readInt()));
+            int n = in.readInt(), d = in.readInt();
+            long t = System.currentTimeMillis();
+            out.println(P048.process(n, d));
+            out.println(System.currentTimeMillis() - t);
             out.flush();
         }
     }

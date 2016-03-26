@@ -19,9 +19,10 @@ public class Template {
         in = new InputReader(System.in);
         out = new Output(System.out);
 
+        //        String path = "D:\\GitHub\\Competetions\\ProjectEuler\\Client\\src\\Problems\\"
         //        String input = "input_file.in", output = "output_file.out";
-        //        FileInputStream fip = new FileInputStream(input);
-        //        FileOutputStream fop = new FileOutputStream(output);
+        //        FileInputStream fip = new FileInputStream(path + input);
+        //        FileOutputStream fop = new FileOutputStream(path + output);
         //        in = new InputReader(fip);
         //        out = new Output(fop);
 
