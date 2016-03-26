@@ -6,8 +6,10 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author: Ashok Rajpurohit ashok1113
- *  problem Link: Urban Ladder Hiring Challenge | Numerical Armageddon Round 1
+ * Problem: Urban Ladder Hiring Challenge | Numerical Armageddon Round 1
+ * https://www.hackerearth.com/urban-ladder-coding-challenge/algorithm/numerical-armageddon-round-1-1/
+ *
+ * @author: Ashok Rajpurohit (ashok1113@gmail.com)
  */
 
 public class UrbanLadderA {

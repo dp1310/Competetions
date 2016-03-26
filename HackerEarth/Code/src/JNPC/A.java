@@ -1,4 +1,4 @@
-//package urozero2014.Day2;
+package JNPC;
 
 import java.io.BufferedReader;
 import java.io.IOException;

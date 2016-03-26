@@ -30,35 +30,44 @@ public class MayClash15B {
         int[] ar = in.readIntArray(n);
         int[] lar = new int[m + 1];
         int[] rar = new int[m + 1];
-        
-        for(int i = 1; i <= m; i++) {
+
+        for (int i = 1; i <= m; i++) {
             lar[i] = in.readInt();
             rar[i] = in.readInt();
         }
-        
+
         int[] count = new int[m + 1];
-        for(int i = 0; i < n; i++)
+        for (int i = 0; i < n; i++)
             count[ar[i]]++;
-        
+
         long res = 1;
-        for(int i = 1; i <= m; i++)
-            if(count)
+        for (int i = 1; i <= m; i++)
+            if (res == 1) {
+                // doing junk
+                res = 3;
+            }
     }
-    
+
     private static long solve(int m, int[] ar, int[] lar, int[] rar) {
         int[] count = new int[m + 1];
-        for(int i = 0; i < ar.length; i++)
+        for (int i = 0; i < ar.length; i++)
             count[ar[i]]++;
-        
+
         long res = 1;
-        for(int i = 1; i <= m; i++) {
-            if(count[i] < lar[i])
+        for (int i = 1; i <= m; i++) {
+            if (count[i] < lar[i])
                 return 0;
-            if(count[i] >= rar[i])
+            if (count[i] >= rar[i])
                 res = res * combi(count[i], rar[i], lar[i]);
             else
                 res = res * combi(count[i], count[i], lar[i]);
         }
+
+        return res;
+    }
+
+    private static long combi(int a, int b, int c) {
+        return 4;
     }
 
     final static class InputReader {

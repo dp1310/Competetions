@@ -1,35 +1,76 @@
+package HC;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
-public class B {
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.TreeMap;
+
+/**
+ * Problem: Navi's Party
+ * Challenge: Lucid Technologies Java Hiring Challenge
+ *
+ * @author: Ashok Rajpurohit ashok1113@gmail.com
+ */
+
+public class LucidNaviParty {
 
     private static PrintWriter out;
     private static InputStream in;
-    private static char[] ar;
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        B a = new B();
+        LucidNaviParty a = new LucidNaviParty();
         a.solve();
         out.close();
     }
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        StringBuilder sb = new StringBuilder();
-        int n = in.readInt();
-        int m = in.readInt();
-        ar = new char[n];
+        int n = in.readInt(), q = in.readInt();
+        //        HashMap<String, Count> names = new HashMap<String, Count>();
+        HashSet<String> set = new HashSet<String>();
 
         for (int i = 0; i < n; i++) {
-            ar[i] = in.read().charAt(0);
+            String name = in.read();
+            if (!set.contains(name)) {
+                set.add(name);
+            }
         }
 
-        out.print(sb);
+        int missings = 0;
+        for (int i = 0; i < q; i++) {
+            String guest = in.read();
+            int age = num(guest);
+
+            if (age == 100) {
+                if (!set.contains(guest)) {
+                    missings++;
+                }
+            } else if (age < 21) {
+                missings++;
+            }
+        }
+
+        out.println(missings);
+    }
+
+    private static int num(String s) {
+        if (s.charAt(0) > '9')
+            return 100;
+
+        int num = 0;
+        for (int i = 0; i < s.length(); i++) {
+            num = (num << 3) + (num << 1) + s.charAt(i) - '0';
+        }
+
+        return num;
     }
 
     final static class InputReader {
@@ -63,34 +104,6 @@ public class B {
             }
             ++offset;
             return number * s;
-        }
-
-        public long readLong() throws IOException {
-            long res = 0;
-            int s = 1;
-            if (offset == bufferSize) {
-                offset = 0;
-                bufferSize = in.read(buffer);
-            }
-            for (; buffer[offset] < 0x30 || buffer[offset] == '-'; ++offset) {
-                if (buffer[offset] == '-')
-                    s = -1;
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            for (; offset < bufferSize && buffer[offset] > 0x2f; ++offset) {
-                res = (res << 3) + (res << 1) + buffer[offset] - 0x30;
-                if (offset == bufferSize - 1) {
-                    offset = -1;
-                    bufferSize = in.read(buffer);
-                }
-            }
-            ++offset;
-            if (s == -1)
-                res = -res;
-            return res;
         }
 
         public String read() throws IOException {

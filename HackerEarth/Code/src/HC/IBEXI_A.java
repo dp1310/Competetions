@@ -1,61 +1,57 @@
-package H14032015honey;
+package HC;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.util.HashMap;
+
 /**
- * @author  Ashok Rajpurohit
+ * Problem: Navi and his company
+ * Challenge: IBEXI (A Sapiens Company) Java Hiring Challenge
+ * Date: 12|03|2016
+ *
+ * @author: Ashok Rajpurohit ashok1113@gmail.com
  */
-public class B {
+
+public class IBEXI_A {
 
     private static PrintWriter out;
     private static InputStream in;
-    private static long[] ar_0 = new long[91], ar_1 = new long[91];
-
-    public B() {
-        creatFibAr();
-    }
-
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        B a = new B();
+        IBEXI_A a = new IBEXI_A();
         a.solve();
         out.close();
     }
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        StringBuilder sb = new StringBuilder();
-        creatFibAr();
         int t = in.readInt();
-
+        int NEW_PROJECT = 3601;
         while (t > 0) {
             t--;
-            int m = in.readInt();
-            sb.append(ar_1[m]).append(' ').append(ar_0[m]).append('\n');
-        }
+            int n = in.readInt();
+            int unassigned = 0, resource = 0;
+            while (n > 0) {
+                n--;
+                int p = in.readInt();
+                if (p == NEW_PROJECT) {
+                    if (resource == 0)
+                        unassigned++;
+                    else
+                        resource--;
 
-        out.print(sb);
-    }
-
-    /**
-     * This function was used to create the arrays (fibonacci) for 0's and 1's.
-     */
-    private static void creatFibAr() {
-        long a = 0, b = 1; // a is no of 0's and b is no of 1's
-        ar_1[0] = 1;
-        ar_0[0] = 0;
-
-        for (int i = 1; i <= 90; i++) {
-            a = a + b;
-            b = a - b;
-            ar_0[i] = a;
-            ar_1[i] = b;
+                    p = in.readInt();
+                } else {
+                    resource += p;
+                }
+            }
+            out.println(unassigned);
         }
     }
 

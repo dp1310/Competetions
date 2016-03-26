@@ -79,7 +79,7 @@ public class IdeaDeviceDecryptCheck {
     private static void inValidFive(StringBuilder sb) {
         boolean res = true;
         int n = random.nextInt(100000);
-        while (true) {
+        while (res) {
             n = random.nextInt(100000);
             for (int i = 0; i < 10; i++)
                 if (validFive[i] == n)

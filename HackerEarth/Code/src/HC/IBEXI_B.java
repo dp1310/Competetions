@@ -1,61 +1,79 @@
-package H14032015honey;
+//package HC;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.util.Arrays;
+import java.util.HashMap;
+
 /**
- * @author  Ashok Rajpurohit
+ * Problem: Gayle and his legacy
+ * Challenge: IBEXI (A Sapiens Company) Java Hiring Challenge
+ * Date: 12|03|2016
+ *
+ * @author: Ashok Rajpurohit ashok1113@gmail.com
  */
-public class B {
+
+public class IBEXI_B {
 
     private static PrintWriter out;
     private static InputStream in;
-    private static long[] ar_0 = new long[91], ar_1 = new long[91];
-
-    public B() {
-        creatFibAr();
-    }
-
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        B a = new B();
+        IBEXI_B a = new IBEXI_B();
         a.solve();
         out.close();
     }
 
     public void solve() throws IOException {
         InputReader in = new InputReader();
-        StringBuilder sb = new StringBuilder();
-        creatFibAr();
+        String yes = "YES\n", no = "NO\n";
         int t = in.readInt();
-
         while (t > 0) {
             t--;
-            int m = in.readInt();
-            sb.append(ar_1[m]).append(' ').append(ar_0[m]).append('\n');
-        }
+            int n = in.readInt();
+            long m = in.readInt();
 
-        out.print(sb);
+            Pair[] pairs = new Pair[n];
+            for (int i = 0; i < n; i++) {
+                pairs[i] = new Pair(in.readInt(), in.readInt());
+            }
+
+            Arrays.sort(pairs);
+            boolean res = true;
+
+            for (int i = 0; i < n && res; i++) {
+                if (pairs[i].power > m) {
+                    res = false;
+                    break;
+                }
+
+                m += pairs[i].gain;
+            }
+
+            if (res)
+                out.print(yes);
+            else
+                out.print(no);
+        }
     }
 
-    /**
-     * This function was used to create the arrays (fibonacci) for 0's and 1's.
-     */
-    private static void creatFibAr() {
-        long a = 0, b = 1; // a is no of 0's and b is no of 1's
-        ar_1[0] = 1;
-        ar_0[0] = 0;
+    final static class Pair implements Comparable<Pair> {
+        int gain, power;
 
-        for (int i = 1; i <= 90; i++) {
-            a = a + b;
-            b = a - b;
-            ar_0[i] = a;
-            ar_1[i] = b;
+        Pair(int x, int y) {
+            gain = x;
+            power = y;
+        }
+
+
+        public int compareTo(Pair o) {
+            return this.power - o.power;
         }
     }
 

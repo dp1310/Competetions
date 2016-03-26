@@ -43,6 +43,7 @@ public class Coc15 {
         if(n<1)
             return 0;
         
+        return 1;
     }
 
     final static class InputReader {

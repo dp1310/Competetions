@@ -1,62 +1,55 @@
-package H14032015honey;
+package HC;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
+import java.util.HashMap;
+
 /**
- * @author  Ashok Rajpurohit
+ * Problem:
+ * Challenge:
+ *
+ * @author: Ashok Rajpurohit ashok1113@gmail.com
  */
-public class B {
+
+public class McAfeeSandwichSharing {
 
     private static PrintWriter out;
     private static InputStream in;
-    private static long[] ar_0 = new long[91], ar_1 = new long[91];
-
-    public B() {
-        creatFibAr();
-    }
-
 
     public static void main(String[] args) throws IOException {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        B a = new B();
+        McAfeeSandwichSharing a = new McAfeeSandwichSharing();
         a.solve();
         out.close();
     }
 
-    public void solve() throws IOException {
+    private void solve() throws IOException {
         InputReader in = new InputReader();
-        StringBuilder sb = new StringBuilder();
-        creatFibAr();
         int t = in.readInt();
-
+        StringBuilder sb = new StringBuilder(t << 2);
         while (t > 0) {
             t--;
-            int m = in.readInt();
-            sb.append(ar_1[m]).append(' ').append(ar_0[m]).append('\n');
+            sb.append(get(in.readInt(), in.readInt())).append('\n');
         }
 
         out.print(sb);
     }
 
-    /**
-     * This function was used to create the arrays (fibonacci) for 0's and 1's.
-     */
-    private static void creatFibAr() {
-        long a = 0, b = 1; // a is no of 0's and b is no of 1's
-        ar_1[0] = 1;
-        ar_0[0] = 0;
-
-        for (int i = 1; i <= 90; i++) {
-            a = a + b;
-            b = a - b;
-            ar_0[i] = a;
-            ar_1[i] = b;
+    private static int get(int n, int p) {
+        while (p > 0 && n > 3) {
+            p--;
+            if ((n & 1) == 0)
+                n = (n >>> 1) + 1;
+            else
+                n = (n >>> 1) + 2;
         }
+
+        return n;
     }
 
     final static class InputReader {

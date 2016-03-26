@@ -1,16 +1,18 @@
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+package Clash;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 
 /**
- * @author: Ashok Rajpurohit ashok1113
- *  problem Link: 
+ * Problem: 
+ * Challenge:
+ *
+ * @author: Ashok Rajpurohit ashok1113@gmail.com
  */
 
-public class KulizaC {
+public class Ashok {
 
     private static PrintWriter out;
     private static InputStream in;
@@ -19,7 +21,7 @@ public class KulizaC {
         OutputStream outputStream = System.out;
         in = System.in;
         out = new PrintWriter(outputStream);
-        KulizaC a = new KulizaC();
+        Ashok a = new Ashok();
         a.solve();
         out.close();
     }
@@ -27,7 +29,6 @@ public class KulizaC {
     public void solve() throws IOException {
         InputReader in = new InputReader();
         int t = in.readInt();
-
         while (t > 0) {
             t--;
         }
