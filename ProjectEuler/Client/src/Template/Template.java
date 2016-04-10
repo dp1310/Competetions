@@ -19,21 +19,24 @@ public class Template {
         in = new InputReader(System.in);
         out = new Output(System.out);
 
-        //        String path = "D:\\GitHub\\Competetions\\ProjectEuler\\Client\\src\\Problems\\"
-        //        String input = "input_file.in", output = "output_file.out";
-        //        FileInputStream fip = new FileInputStream(path + input);
-        //        FileOutputStream fop = new FileOutputStream(path + output);
-        //        in = new InputReader(fip);
-        //        out = new Output(fop);
+        //        String path =
+        //            "D:\\GitHub\\Competetions\\ProjectEuler\\Client\\src\\Problems\\", input =
+        //            "input_file.in", output = "output_file.out";
+        //        in = new InputReader(path + input);
+        //        out = new Output(path + output);
 
         Template a = new Template();
-        a.solve();
+        try {
+            a.solve();
+        } catch (IOException ioe) {
+            out.close();
+        }
         out.close();
     }
 
     private void solve() throws IOException {
         while (true) {
-            // write code here, call function, whatever you do
+            out.println(in.read());
         }
     }
 }
