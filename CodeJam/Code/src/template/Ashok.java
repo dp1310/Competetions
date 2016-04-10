@@ -24,12 +24,13 @@ public class Ashok {
         //        in = System.in;
         //        out = new PrintWriter(outputStream);
 
+        String path = "D:\\GitHub\\Competetions\\CodeJam\\Code\\src\\";
         String input = "input_file.in", output = "output_file.out";
-        FileInputStream fip = new FileInputStream(input);
-        FileOutputStream fop = new FileOutputStream(output);
+        FileInputStream fip = new FileInputStream(path + input);
+        FileOutputStream fop = new FileOutputStream(path + output);
         in = fip;
         out = new PrintWriter(fop);
-        CJ15Q.Ashok a = new CJ15Q.Ashok();
+        Ashok a = new Ashok();
         a.solve();
         out.close();
     }
